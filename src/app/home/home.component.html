@@ -1,2 +1,14 @@
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis doloremque hic nulla amet inventore? Illo expedita tempora, molestiae omnis cum culpa. Aliquam ut eveniet sapiente, quisquam dolorem rem veritatis vitae.
-Eaque dicta tempora in incidunt aliquam blanditiis cumque repellendus laboriosam dolorem, quibusdam, consectetur veniam iusto voluptatum facere quisquam. Architecto incidunt sed omnis. Dicta culpa in maiores eveniet odio eligendi aperiam.</p>
+
+<div class="wrapper ">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis doloremque hic nulla amet inventore? Illo expedita tempora, molestiae omnis cum culpa. Aliquam ut eveniet sapiente, quisquam dolorem rem veritatis vitae.
+        Eaque dicta tempora in incidunt aliquam blanditiis cumque repellendus laboriosam dolorem, quibusdam, consectetur veniam iusto voluptatum facere quisquam. Architecto incidunt sed omnis. Dicta culpa in maiores eveniet odio eligendi aperiam.</p>
+    <p-button 
+        (click)="OnSaludar()" 
+        label="See more"
+        styleClass="p-button-link p-4 mt-0 ">
+    </p-button>
+
+    <span style="display: flex;">{{saludar}}</span>
+</div>
+
+<app-inventory-list></app-inventory-list>
