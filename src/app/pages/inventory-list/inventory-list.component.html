@@ -1,1 +1,37 @@
-<p>inventory-list works!</p>
+<h3>INVENTORY</h3>
+<div *ngIf="errorMessage">
+    <p style="color: red;">{{ errorMessage }}</p>
+</div>
+
+<!-- <ul *ngIf="!errorMessage">
+    <li *ngFor="let product of products">
+        {{product.title}}  
+     </li>
+</ul> -->
+
+<p-dataView #dv [value]="products">
+    <ng-template pTemplate="list" let-products>
+        <div class="product-list">
+            <div class="product-item" *ngFor="let item of products">
+                <div class="product-image">
+                    <img [src]="item.image" [alt]="item.title" />
+                </div>
+                <div class="product-details">
+                    <span class="product-category">{{ item.category }}</span>
+                    <div class="product-title">{{ item.title }}</div>
+                    <div class="product-rating">
+                        <span>{{ item.rating.rate }}</span>
+                        <i class="pi pi-star-fill text-yellow-500"></i>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <span class="product-price">{{ '$' + item.price }}</span>
+                    <div class="product-buttons">
+                        <p-button icon="pi pi-heart" [outlined]="true"></p-button>
+                        <p-button icon="pi pi-shopping-cart" label="Buy Now" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-dataView>
