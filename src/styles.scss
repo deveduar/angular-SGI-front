@@ -2,14 +2,14 @@
 
 
 :root {
-    // --primary-color: #0c96ff;
-    --secondary-color: #505050;
+    --primary-color: #0c1923;
+    --secondary-color: #0d1015;
     // --text-color: #333;
-    --background-color: #2a2a2a;
+    --background-color: #1F2937;
   
     --font-family-base: Arial, sans-serif;
     --font-size-base: 16px;
-    --line-height-base: 1.5;
+    --line-height-base: 1.2;
   
     --spacing-unit: 8px;
     --border-radius-base: 50px;
@@ -200,9 +200,9 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 calc(1.25 * var(--spacing-unit)); // 10px
-    font-weight: normal;
-    line-height: 1.2;
+    margin: 0 0 calc(1.25 * var(--spacing-unit)); 
+    // font-weight: normal;
+    // line-height: 1.2;
     color: var(--text-color);
   }
   

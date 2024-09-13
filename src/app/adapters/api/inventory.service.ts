@@ -13,7 +13,7 @@ export interface Product {
     rate: number;
     count: number;
   };
-  inventoryStatus: string;
+  // inventoryStatus: string;
 }
 
 @Injectable({
@@ -21,7 +21,7 @@ export interface Product {
 })
 
 export class InventoryService {
-  private apiUrl = 'https://fakestoreapi.com/products?limit=12';
+  private apiUrl = 'https://fakestoreapi.com/products?limit=20';
 
 
   constructor(private http: HttpClient) { }
