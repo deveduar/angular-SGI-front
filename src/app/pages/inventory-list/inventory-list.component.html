@@ -9,14 +9,18 @@
 </ul> -->
 <h3 class="product-heading">Product list</h3>
 
-<p-dataView #dv [value]="products" [rows]="12" responsiveLayout="stack" [paginator]="true" [sortField]="sortField" [sortOrder]="sortOrder">
+<p-dataView #dv [value]="products" [rows]="12" responsiveLayout="stack" [paginator]="true" [sortField]="sortField" [sortOrder]="sortOrder" >
     <ng-template pTemplate="header">
         <div class="product-sort">
             <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price" (onChange)="onSortChange($event)" />
+            <p-dataViewLayoutOptions  />
+
         </div>
+
     </ng-template>
-    <ng-template pTemplate="list" let-products>
-        <div class="product-list">
+
+    <ng-template pTemplate="grid" let-products>
+        <div class="product-grid">
             <div class="product-item" *ngFor="let item of products">
                 <div class="product-image">
                     <img [src]="item.image" [alt]="item.title" />
@@ -45,4 +49,31 @@
             </div>
         </div>
     </ng-template>
+    <ng-template let-product pTemplate="list" let-products>
+        <div class="product-list-container">
+          <div class="product-list-item" *ngFor="let item of products">
+            <div class="product-list-image-container">
+              <img class="product-list-image" [src]="item.image" [alt]="item.title" />
+            </div>
+            <div class="product-list-details">
+              <span class="product-list-category">{{ item.category }}</span>
+              <div class="product-list-title">{{ item.title }}</div>
+              <div class="product-list-tag-rate">
+                <div class="product-list-rating-container">
+                    <span class="product-list-rating">{{ item.rating.rate }}</span>
+                    <i class="pi pi-star-fill product-list-star"></i>
+                  </div>
+                  <p-tag class="disp-tag"  severity="success" value="Stock" />
+              </div>
+
+            </div>
+            <div class="product-list-actions">
+                <div class="product-list-price">{{ '€' + item.price }}</div>
+                <p-button icon="pi pi-shopping-cart" class="product-list-buy-button" label="Buy Now" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'" />
+                <p-button icon="pi pi-heart" [outlined]="true" class="product-list-wishlist-button" />
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      
 </p-dataView>

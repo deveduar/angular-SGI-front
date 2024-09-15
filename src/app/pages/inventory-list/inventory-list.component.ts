@@ -27,6 +27,8 @@ export class InventoryListComponent {
     sortField!: string;
     sortKey: string = '';
 
+    layout: string = 'grid' ;
+
     constructor(private inventoryService: InventoryService){}
 
     ngOnInit(): void {
@@ -36,7 +38,7 @@ export class InventoryListComponent {
           next: (data) => {
           this.products = data;
           this.errorMessage = null;
-          console.log(data)
+          // console.log(data)
         },
           error: (err) => {
             this.errorMessage = `ERROR: ${err.message}`;
