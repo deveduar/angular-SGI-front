@@ -30,17 +30,21 @@
                     <span class="product-category">{{ item.category }}</span>
                     <div class="product-title">{{ item.title }}</div>
                     <!-- <div class="product-description">{{ item.description }}</div> -->
-                    <div class="product-rating">
-                        <span>{{ item.rating.rate }}</span>
-                        <i class="pi pi-star-fill "></i>
-                    </div>
                 </div>
 
-                <div class="product-actions">
-                    <div class="product-status">
-                         <span class="product-price">{{ '€' + item.price }}</span>
-                        <p-tag severity="success" value="Stock" class="absolute"/>
+
+                <div class="product-status">
+                    <div class="product-rate">
+                        <div class="product-rating">
+                            <span>{{ item.rating.rate }}</span>
+                            <i class="pi pi-star-fill "></i>
+                        </div>
+                        <p-tag severity="success" value="Stock" class="product-tag"/>
+                        
                     </div>
+                    <div class="product-price">{{ '€' + item.price }}</div>
+               </div>
+                <div class="product-actions">
                     <div class="product-buttons">
                         <p-button icon="pi pi-heart" [outlined]="true"></p-button>
                         <p-button icon="pi pi-shopping-cart" label="Buy Now" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"></p-button>
@@ -69,8 +73,10 @@
             </div>
             <div class="product-list-actions">
                 <div class="product-list-price">{{ '€' + item.price }}</div>
-                <p-button icon="pi pi-shopping-cart" class="product-list-buy-button" label="Buy Now" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'" />
-                <p-button icon="pi pi-heart" [outlined]="true" class="product-list-wishlist-button" />
+                <div class="product-list-buttons">
+                    <p-button icon="pi pi-shopping-cart" class="product-list-buy-button" label="Buy Now" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'" />
+                    <p-button icon="pi pi-heart" [outlined]="true" class="product-list-wishlist-button" />
+                </div>
             </div>
           </div>
         </div>
