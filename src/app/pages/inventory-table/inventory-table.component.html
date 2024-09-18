@@ -1,1 +1,69 @@
-<p>inventory-table works!</p>
+<div class="card">
+    <p-table 
+     #dt2
+    [value]="products" 
+    [tableStyle]="{ 'min-width': '50rem' }" styleClass="p-datatable-sm" 
+    [paginator]="true" 
+    [rows]="10"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    dataKey="id"
+    [loading]="loading"
+    [globalFilterFields]="['title']"
+    >
+        <ng-template pTemplate="caption">
+            <div class="caption-table">
+                Products
+                <!-- <p-button icon="pi pi-refresh" /> -->
+                <p-iconField iconPosition="left">
+                    <p-inputIcon>
+                        <i class="pi pi-search"></i>
+                    </p-inputIcon>
+                    <input 
+                        pInputText 
+                        type="text" 
+                        (input)="onFilter($event)" 
+                        placeholder="Search by name" />
+                </p-iconField>
+            </div>
+ 
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <!-- <th>id</th> -->
+                <th pSortableColumn="title" style="width:40%">
+                    Name <p-sortIcon field="title" />
+                </th>
+                <th>Image</th>
+                <th pSortableColumn="category" style="width:18%">
+                    Category <p-sortIcon field="category" />
+                </th>
+                <th pSortableColumn="price" style="width:10%">
+                    Price <p-sortIcon field="price" />
+                </th>
+                <th pSortableColumn="rating.rate" style="width:10%">
+                    Reviews <p-sortIcon field="rating" />
+                </th>
+                <th>Status</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{ product.title }}</td>
+                <td class="image-table"><img [src]="product.image" [alt]="product.title" width="60" height="60"/></td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.price | currency:'EUR' }}</td>
+                <td>
+                    <p-rating [(ngModel)]="product.rating.rate" [readonly]="true" [cancel]="false" />
+                </td>
+                <td>
+                    <p-tag class="disp-tag"  severity="success" value="Stock" />
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="summary-table">
+                In total there are {{products ? products.length : 0 }} products.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
