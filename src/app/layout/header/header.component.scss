@@ -1,5 +1,76 @@
-.header {
-    background-color: var(--secondary-color);
-    text-align: center;
+// .header {
+//     background-color: var(--secondary-color);
+//     text-align: center;
    
+//   }
+
+.dash-nav {
+  // padding-bottom: 2rem;
+}
+
+.navbar-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: inherit;
+  cursor: pointer;
+  
+  // &:hover {
+  //   background-color: #808080; /* Efecto de hover, ajusta según tu tema */
+  // }
+}
+
+.navbar-icon {
+  /* Aquí puedes personalizar más según el icono */
+  margin-right: 0.5rem; 
+}
+
+.navbar-badge {
+  margin-left: auto;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.25rem;
+  background-color: var(--surface-100);
+  font-size: 0.75rem;
+  padding: 0.25rem;
+}
+
+.navbar-shortcut {
+  margin-left: auto;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.25rem;
+  background-color: var(--surface-100);
+  font-size: 0.75rem;
+  padding: 0.25rem;
+}
+
+.navbar-icon-arrow {
+  margin-left: auto;
+  &.root {
+    margin-left: 0.5rem; 
   }
+}
+
+.navbar-search-avatar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+  margin-right: 1.5rem;
+
+}
+
+.navbar-input {
+  width: 8rem;
+
+  @media (min-width: 640px) {
+    width: auto; /* Equivalente a 'sm:w-auto' en Tailwind */
+  }
+
+  @media (max-width: 768px) {
+    margin-right: 0.5rem;
+  }
+}
+
+.navbar-avatar {
+  border-radius: 50%;
+}

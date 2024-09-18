@@ -9,11 +9,12 @@ import { PaginatorModule } from 'primeng/paginator';
 import { DropdownModule } from 'primeng/dropdown';
 import { SelectItem } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-inventory-list',
   standalone: true,
-  imports: [CommonModule, DataViewModule, ButtonModule, TagModule, RatingModule, PaginatorModule, DropdownModule, FormsModule],
+  imports: [CommonModule, DataViewModule, ButtonModule, TagModule, RatingModule, PaginatorModule, DropdownModule, FormsModule, RouterModule],
   templateUrl: './inventory-list.component.html',
   styleUrl: './inventory-list.component.scss'
 })
@@ -27,7 +28,7 @@ export class InventoryListComponent {
     sortField!: string;
     sortKey: string = '';
 
-    layout: string = 'grid' ;
+    layout: string = 'list' ;
 
     constructor(private inventoryService: InventoryService){}
 
