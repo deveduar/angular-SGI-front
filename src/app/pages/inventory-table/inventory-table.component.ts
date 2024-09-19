@@ -11,11 +11,24 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
+import { ConfirmationService, MessageService } from 'primeng/api'
+import { DialogModule } from 'primeng/dialog';
+import { RippleModule } from 'primeng/ripple';
+import { ToastModule } from 'primeng/toast';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+// import { FileUploadModule } from 'primeng/fileupload';
+import { DropdownModule } from 'primeng/dropdown';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputNumberModule } from 'primeng/inputnumber';
+
+
 
 @Component({
   selector: 'app-inventory-table',
   standalone: true,
-  imports: [TableModule, TagModule, RatingModule, ButtonModule, CommonModule, FormsModule, InputTextModule, IconFieldModule, InputIconModule],
+  imports: [TableModule, TagModule, RatingModule, ButtonModule, CommonModule, FormsModule, InputTextModule, IconFieldModule, InputIconModule, DialogModule, RippleModule,ToastModule, ToolbarModule, ConfirmDialogModule, InputTextareaModule, DropdownModule, RadioButtonModule, InputNumberModule],
   templateUrl: './inventory-table.component.html',
   styleUrl: './inventory-table.component.scss'
 })
@@ -29,7 +42,12 @@ export class InventoryTableComponent {
 
   @ViewChild('dt2') dt2!: Table;
 
-  constructor(private inventoryService: InventoryService){}
+  selectedProducts!:Product[] | null;
+  product!: Product;
+  submitted: boolean = false;
+  productDialog: boolean = false;
+
+  constructor(private inventoryService: InventoryService, private confirmationService:ConfirmationService, private messageService: MessageService){}
 
   ngOnInit(): void {
     this.inventoryService.getProducts().subscribe(
@@ -52,6 +70,111 @@ export class InventoryTableComponent {
     if (inputElement) {
       this.dt2.filterGlobal(inputElement.value, 'contains')
     }
+  }
+
+  openNew() {
+    // this.product = {};
+    this.product = {
+      id: 0, 
+      title: '',
+      price: 0,
+      description: '',
+      category: '',
+      image: '',
+      rating: { rate: 0, count: 0 }  
+  };
+    this.submitted = false;
+    this.productDialog = true;
+  }
+
+  deleteSelectedProducts() {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete the selected products?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+          this.products = this.products.filter((val) => !this.selectedProducts?.includes(val));
+          this.selectedProducts = null;
+          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
+      }
+  });
+  }
+
+  editProduct(product: Product) {
+    this.product = { ...product };
+    this.productDialog = true;
+  }
+
+  deleteProduct(product: Product) {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete ' + product.title + '?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+          this.products = this.products.filter((val) => val.id !== product.id);
+          this.product = {
+            id: 0, 
+            title: '',
+            price: 0,
+            description: '',
+            category: '',
+            image: '',
+            rating: { rate: 0, count: 0 }  
+        };
+          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+      }
+  });
+  }
+
+  saveProduct() {
+    this.submitted = true;
+
+    if (this.product.title?.trim()) {
+        if (this.product.id) {
+            this.products[this.findIndexById(this.product.id)] = this.product;
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
+        } else {
+            this.product.id = this.createId();
+            this.product.image = 'product-placeholder.svg';
+            this.products.push(this.product);
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
+        }
+
+        this.products = [...this.products];
+        this.productDialog = false;
+        this.product = {
+          id: 0, 
+          title: '',
+          price: 0,
+          description: '',
+          category: '',
+          image: '',
+          rating: { rate: 0, count: 0 }  
+      };
+    }
+  }
+
+  hideDialog() {
+    this.productDialog = false;
+    this.submitted = false;
+  }
+
+  findIndexById(id: number): number {
+    let index = -1;
+    for (let i = 0; i < this.products.length; i++) {
+        if (this.products[i].id === id) {
+            index = i;
+            break;
+        }
+    }
+
+    return index;
+  }
+
+  createId(): number {
+    return this.products.length > 0 
+        ? Math.max(...this.products.map(product => product.id)) + 1 
+        : 1;
   }
 
 }

@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 
 // .image-table {
@@ -17,3 +17,50 @@
 //     // clip-path: inset(0 200px 200px 0); 
 //     // object-fit: cover
 // }
+
+// :host ::ng-deep .p-dialog .product-image {
+//     width: 150px;
+//     margin: 0 auto 2rem auto;
+//     display: block;
+// }
+
+
+.dialog-image {
+  display: block;
+  margin: auto;
+  padding-bottom: 0.75rem;
+  width: 50%;
+  height: 50%;
+}
+
+.toolbar-button {
+    margin-right: 1rem;
+
+}
+
+.card {
+    padding-top: 2rem;
+}
+
+.buttons-table {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    border: none;
+    // padding: 0.25rem 0.5rem;
+    margin-top: 0.5rem;
+    box-shadow: none;
+    size: 0.5rem;
+    font-size: 0.05rem;
+}
+
+.body-table {
+    align-items: center;
+}
+
+
+.product-rating i {
+    margin-left: 0.5rem;
+    color: rgb(227, 227, 58);
+}
