@@ -47,6 +47,8 @@ export class InventoryTableComponent {
   submitted: boolean = false;
   productDialog: boolean = false;
 
+  categories: string[] = []; 
+
   constructor(private inventoryService: InventoryService, private confirmationService:ConfirmationService, private messageService: MessageService){}
 
   ngOnInit(): void {
@@ -57,6 +59,7 @@ export class InventoryTableComponent {
         this.products = data;
         this.errorMessage = null;
         this.loading = false;
+        this.categories = [...new Set(data.map(product => product.category))];
       },
         error: (err) => {
           this.errorMessage = `ERROR: ${err.message}`;
@@ -129,13 +132,13 @@ export class InventoryTableComponent {
   saveProduct() {
     this.submitted = true;
 
-    if (this.product.title?.trim()) {
+    if (this.product.title?.trim() && this.product.description?.trim() && this.product.price > 0 ) {
         if (this.product.id) {
             this.products[this.findIndexById(this.product.id)] = this.product;
             this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
         } else {
             this.product.id = this.createId();
-            this.product.image = 'product-placeholder.svg';
+            this.product.image = 'https://placehold.co/600x400/png';
             this.products.push(this.product);
             this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
         }

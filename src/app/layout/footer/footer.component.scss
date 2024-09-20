@@ -1,6 +1,9 @@
 .footer {
-    background-color: var(--secondary-color);
+    background-color: var(--surface-100);
     text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
   }
 
   .footer p {
@@ -8,6 +11,7 @@
     font-size: var(--line-height-base);
   }
 
-  // .footer a:hover {
-  //   text-decoration: underline; 
-  // }
+  .footer a {
+    text-decoration: none; 
+    font-style: bold;
+  }
