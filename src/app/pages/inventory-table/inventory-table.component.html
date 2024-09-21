@@ -42,10 +42,10 @@
     dataKey="id"
     [loading]="loading"
     [globalFilterFields]="['title']"
-    [rowHover]="true"
     [(selection)]="selectedProducts"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [showCurrentPageReport]="true"
+    
     
     >
         <ng-template pTemplate="caption">
@@ -65,8 +65,8 @@
             </div>
  
         </ng-template>
-        <ng-template pTemplate="header">
-            <tr>
+        <ng-template pTemplate="header" >
+            <tr class="table-header">
                 <!-- <th>id</th> -->
                 <th style="width: 4rem">
                     <p-tableHeaderCheckbox />
@@ -85,6 +85,7 @@
                     Reviews <p-sortIcon field="rating" />
                 </th>
                 <th style="width:10%" >Status</th>
+                <th></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-product>

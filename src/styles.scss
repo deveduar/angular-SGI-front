@@ -2,6 +2,20 @@
 
 
 :root {
+  $colors: (
+    "blue": #3b82f6,
+    "green": #22c55e,
+    "yellow": #eab308,
+    "cyan": #06b6d4,
+    "pink": #ec4899,
+    "indigo": #6366f1,
+    "teal": #14b8a6,
+    "orange": #f97316,
+    "bluegray": #64748b,
+    "purple": #a855f7,
+    "red": #ff3d32,
+  );
+
     --primary-color: #0c1923;
     --secondary-color: #0d1015;
     // --text-color: #333;
@@ -14,6 +28,10 @@
     --spacing-unit: 8px;
     --border-radius-base: 50px;
     --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    @each $name, $color in $colors {
+      --#{$name}-color: #{$color};
+    }
   }
   
   // Reset básico y configuración global
@@ -36,9 +54,11 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: var(--background-color);
+    background-color: var(--surface-0);
   }
   
+ 
+
   // // Clases de utilidad para layout y estructura
   // .row {
   //   display: flex;
