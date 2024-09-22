@@ -1,20 +1,3 @@
-
-<!-- <div class=" ">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis doloremque hic nulla amet inventore? Illo expedita tempora, molestiae omnis cum culpa. Aliquam ut eveniet sapiente, quisquam dolorem rem veritatis vitae.
-        Eaque dicta tempora in incidunt aliquam blanditiis cumque repellendus laboriosam dolorem, quibusdam, consectetur veniam iusto voluptatum facere quisquam. Architecto incidunt sed omnis. Dicta culpa in maiores eveniet odio eligendi aperiam.</p>
-    <p-button 
-        (click)="OnSaludar()" 
-        label="See more"
-        styleClass="p-button-link p-4 mt-0 ">
-    </p-button>
-
-    <span style="display: flex;">{{saludar}}</span>
-</div> -->
-
-<!-- <app-inventory-list></app-inventory-list> -->
-<!-- <app-inventory-table></app-inventory-table> -->
-
-
 <div class="dashboard">
     <div class="dashboard__grid">
         <div class="dashboard__card dashboard__card--orders">
@@ -81,5 +64,33 @@
             </div>
         </div>
     </div>
+    <!-- <div class="card xl:flex xl:justify-content-center">
+        <p-orderList 
+            [value]="products" 
+            [listStyle]="{ height: '25rem' }" 
+            header="List of Products">
+                <ng-template let-product pTemplate="item">
+                    <div class="flex flex-wrap p-2 align-items-center gap-3">
+                        <img 
+                            src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" 
+                            [alt]="product.name" 
+                            class="w-4rem shadow-2 flex-shrink-0 border-round" />
+                                <div class="flex-1 flex flex-column gap-2">
+                                    <span class="font-bold">{{ product.name }}</span>
+                                    <div class="flex align-items-center gap-2">
+                                        <i class="pi pi-tag text-sm"></i>
+                                        <span>
+                                            {{ product.category }}
+                                        </span>
+                                    </div>
+                                </div>
+                        <span class="font-bold text-900">
+                            {{ '$' + product.price }}
+                        </span>
+                    </div>
+                </ng-template>
+        </p-orderList>
+    </div> -->
 </div>
+
 

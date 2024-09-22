@@ -1,6 +1,8 @@
 import { Component, viewChild } from '@angular/core';
 import { TableModule } from 'primeng/table';
-import { InventoryService, Product } from '../../adapters/api/inventory.service';
+import { InventoryService } from '../../adapters/api/inventory.service';
+import { Product } from '../../domain/models/product';
+
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';

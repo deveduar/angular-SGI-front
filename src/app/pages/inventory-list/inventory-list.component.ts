@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { InventoryService, Product } from '../../adapters/api/inventory.service';
+import { InventoryService } from '../../adapters/api/inventory.service';
+import { Product } from '../../domain/models/product';
+
 import { CommonModule } from '@angular/common';
 import { DataViewModule } from 'primeng/dataview';
 import { ButtonModule } from 'primeng/button';

@@ -4,8 +4,9 @@
    
 //   }
 
-.dash-nav {
+::ng-deep .p-menubar {
   // padding-bottom: 2rem;
+  background-color: var(--surface-50);
 }
 
 .navbar-link {
