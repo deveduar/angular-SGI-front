@@ -77,7 +77,7 @@ export class InventoryTableComponent {
     }
   }
 
-  openNew() {
+  onOpenNew() {
     // this.product = {};
     this.product = {
       id: 0, 
@@ -92,7 +92,7 @@ export class InventoryTableComponent {
     this.productDialog = true;
   }
 
-  deleteSelectedProducts() {
+  onDeleteSelectedProducts() {
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete the selected products?',
       header: 'Confirm',
@@ -105,12 +105,12 @@ export class InventoryTableComponent {
   });
   }
 
-  editProduct(product: Product) {
+  onEditProduct(product: Product) {
     this.product = { ...product };
     this.productDialog = true;
   }
 
-  deleteProduct(product: Product) {
+  onDeleteProduct(product: Product) {
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete ' + product.title + '?',
       header: 'Confirm',
@@ -131,7 +131,7 @@ export class InventoryTableComponent {
   });
   }
 
-  saveProduct() {
+  onSaveProduct() {
     this.submitted = true;
 
     if (this.product.title?.trim() && this.product.description?.trim() && this.product.price > 0 ) {
@@ -159,7 +159,7 @@ export class InventoryTableComponent {
     }
   }
 
-  hideDialog() {
+  onHideDialog() {
     this.productDialog = false;
     this.submitted = false;
   }

@@ -7,12 +7,12 @@
                 label="New" 
                 icon="pi pi-plus" 
                 class="toolbar-button" 
-                (onClick)="openNew()" />
+                (onClick)="onOpenNew()" />
             <p-button
                 severity="danger" 
                 label="Delete" 
                 icon="pi pi-trash" 
-                (onClick)="deleteSelectedProducts()" 
+                (onClick)="onDeleteSelectedProducts()" 
                 [disabled]="!selectedProducts || !selectedProducts.length"
             />
         </ng-template>
@@ -112,14 +112,14 @@
                         [rounded]="true" 
                         [outlined]="true" 
                         severity="success" 
-                        (onClick)="editProduct(product)" />
+                        (onClick)="onEditProduct(product)" />
                     <p-button 
                         size="small"
                         icon="pi pi-trash" 
                         severity="danger" 
                         [rounded]="true" 
                         [outlined]="true" 
-                        (onClick)="deleteProduct(product)" />   
+                        (onClick)="onDeleteProduct(product)" />   
                 </td>
             </tr>
         </ng-template>
@@ -235,12 +235,12 @@
                 label="Cancel" 
                 icon="pi pi-times" 
                 [text]="true" 
-                (onClick)="hideDialog()" />
+                (onClick)="onHideDialog()" />
             <p-button
                 label="Save" 
                 icon="pi pi-check" 
                 [text]="true" 
-                (onClick)="saveProduct()" />
+                (onClick)="onSaveProduct()" />
         </ng-template>
     </p-dialog>
 

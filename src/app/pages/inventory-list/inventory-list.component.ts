@@ -13,24 +13,40 @@ import { SelectItem } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
+
+type sortField = "price" | "id";
+
 @Component({
   selector: 'app-inventory-list',
   standalone: true,
-  imports: [CommonModule, DataViewModule, ButtonModule, TagModule, RatingModule, PaginatorModule, DropdownModule, FormsModule, RouterModule],
+  imports: [CommonModule, DataViewModule, ButtonModule, TagModule, RatingModule, PaginatorModule, DropdownModule, FormsModule, RouterModule, IconFieldModule, InputIconModule, InputTextModule],
   templateUrl: './inventory-list.component.html',
   styleUrl: './inventory-list.component.scss'
 })
 
 export class InventoryListComponent {
+
+
     products!: Product[];
     errorMessage: string | null = null;
     
     sortOptions!: SelectItem[];
     sortOrder!: number;
-    sortField!: string;
-    sortKey: string = '';
+    // sortField!: string;
+    sortField: sortField = 'price';
+    // sortKey: SortKey = 'price';
 
     layout: string = 'list' ;
+
+    searchTerm: string = '';
+    filteredProducts: Product[] = [];
+
+    categoryOptions: any[] = [];
+    selectedCategory: string = '';
+    categories: string[] = [];
 
     constructor(private inventoryService: InventoryService){}
 
@@ -42,6 +58,18 @@ export class InventoryListComponent {
           this.products = data;
           this.errorMessage = null;
           // console.log(data)
+
+          this.filteredProducts = [...this.products];
+          this.categories = [...new Set(this.products.map(product => product.category))];
+          this.categoryOptions = this.categories.map(category => ({
+            label: category, 
+            value: category
+          }));
+          
+          this.categoryOptions.unshift({ label: 'All Categories', value: '' });
+
+          this.sortField = 'id';
+          this.sortOrder = 1;
         },
           error: (err) => {
             this.errorMessage = `ERROR: ${err.message}`;
@@ -50,9 +78,12 @@ export class InventoryListComponent {
       );
 
       this.sortOptions = [
+        { label: 'Sort by ID', value: 'id' },
         { label: 'Price High to Low', value: '!price' },
         { label: 'Price Low to High', value: 'price' }
       ];
+
+
     };
 
     onSortChange(event: any) {
@@ -65,8 +96,41 @@ export class InventoryListComponent {
           this.sortOrder = 1;
           this.sortField = value;
       }
-  }
+      this.applySort();
+    }
 
+    onSearchChange() {
+      this.filteredProducts = this.products.filter(product =>
+          product.title.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
+          (this.selectedCategory ? product.category === this.selectedCategory : true)
+      );
+      this.applySort();
+    }
+
+    onCategoryChange(event: any) {
+      this.selectedCategory = event.value;
+      this.searchTerm = '';
+
+      if (!this.selectedCategory || this.selectedCategory === '') {
+        this.filteredProducts = [...this.products];
+      } else {
+        // Filtra los productos por la categoría seleccionada
+        this.filteredProducts = this.products.filter(product =>
+          product.category === this.selectedCategory
+        );
+      }
+      this.applySort();
+    }
+
+    applySort() {
+      if (this.sortField) {
+          this.filteredProducts.sort((a, b) => {
+              const isAsc = this.sortOrder === 1;
+              const comparison = a[this.sortField] < b[this.sortField] ? -1 : 1;
+              return isAsc ? comparison : -comparison;
+          });
+      }
+    }
 
   //   getSeverity (product: Product) {
   //     switch (product.inventoryStatus) {

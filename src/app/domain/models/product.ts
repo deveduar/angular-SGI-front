@@ -11,3 +11,5 @@ export interface Product {
     };
     // inventoryStatus: string;
 }
+
+// export type SortKey = 'price';

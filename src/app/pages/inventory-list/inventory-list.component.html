@@ -10,10 +10,27 @@
 <!-- <h3 class="product-heading">Product list</h3> -->
 
 <div class="dash-products">
-    <p-dataView #dv [value]="products" [rows]="12" responsiveLayout="stack" [paginator]="true" [sortField]="sortField" [sortOrder]="sortOrder" >
+    <p-dataView #dv [value]="filteredProducts" [rows]="12" responsiveLayout="stack" [paginator]="true" [sortField]="sortField" [sortOrder]="sortOrder" >
         <ng-template pTemplate="header">
             <div class="product-sort">
-                <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price" (onChange)="onSortChange($event)" />
+                <p-dropdown [options]="sortOptions" [(ngModel)]="sortField" placeholder="Sort By Price" (onChange)="onSortChange($event)" />
+                <p-dropdown 
+                    [options]="categoryOptions" 
+                    [(ngModel)]="selectedCategory" 
+                    placeholder="Filter by Category" 
+                    (onChange)="onCategoryChange($event)" 
+                ></p-dropdown>
+                <div class="input-search">
+                    
+                    <!-- <p-button icon="pi pi-refresh" /> -->
+                    <p-iconField iconPosition="left">
+                        <p-inputIcon styleClass="pi pi-search" />
+                        <input type="text" pInputText 
+                        [(ngModel)]="searchTerm" 
+                        (input)="onSearchChange()" 
+                        placeholder="Search products" />
+                    </p-iconField>
+                </div>
                 <p-dataViewLayoutOptions  />
             </div>
         </ng-template>
