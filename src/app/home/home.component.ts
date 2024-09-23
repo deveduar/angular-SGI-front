@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { InventoryTableComponent } from '../pages/inventory-table/inventory-table.component';
-// import { OrderListModule } from 'primeng/orderlist';
+import { OrderListModule } from 'primeng/orderlist';
 import { InventoryService } from '../adapters/api/inventory.service';
 import { Product } from '../domain/models/product';
-import { OrderListModule } from 'primeng/orderlist';
+import { ListboxModule } from 'primeng/listbox';
+
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ import { OrderListModule } from 'primeng/orderlist';
     CommonModule,
     ButtonModule,
     InventoryTableComponent,
-    // OrderListModule
+    OrderListModule,
+    ListboxModule
   
   ],
   templateUrl: './home.component.html',
@@ -31,7 +33,7 @@ export class HomeComponent {
 
       {     
         next: (data) => {
-        this.products = data;
+        this.products = data.slice(0, 20);
         this.errorMessage = null;
         // console.log(data)
       },

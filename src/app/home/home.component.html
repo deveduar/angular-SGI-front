@@ -64,33 +64,72 @@
             </div>
         </div>
     </div>
-    <!-- <div class="card xl:flex xl:justify-content-center">
-        <p-orderList 
-            [value]="products" 
-            [listStyle]="{ height: '25rem' }" 
-            header="List of Products">
-                <ng-template let-product pTemplate="item">
-                    <div class="flex flex-wrap p-2 align-items-center gap-3">
-                        <img 
-                            src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" 
-                            [alt]="product.name" 
-                            class="w-4rem shadow-2 flex-shrink-0 border-round" />
-                                <div class="flex-1 flex flex-column gap-2">
-                                    <span class="font-bold">{{ product.name }}</span>
-                                    <div class="flex align-items-center gap-2">
-                                        <i class="pi pi-tag text-sm"></i>
-                                        <span>
-                                            {{ product.category }}
-                                        </span>
-                                    </div>
-                                </div>
-                        <span class="font-bold text-900">
-                            {{ '$' + product.price }}
-                        </span>
-                    </div>
-                </ng-template>
-        </p-orderList>
-    </div> -->
+
 </div>
 
+<!-- <div class="order-list">
+    <p-orderList 
+        [value]="products" 
+        [listStyle]="{ height: '25rem' }"
+        [dragdrop]="true" 
+        filterBy="title"
+        header="List of Products"
+        controlsPosition="right"
+        >
+        <ng-template let-product pTemplate="item">
+            <div class="order-list__item">
+                <img 
+                    src="{{product.image}}" 
+                    [alt]="product.title" 
+                    class="order-list__item-image" />
+                <div class="order-list__item-info">
+                    <span class="order-list__item-name">{{ product.title }}</span>
+                    <div class="order-list__item-category">
+                        <i class="pi pi-tag order-list__icon"></i>
+                        <span>{{ product.category }}</span>
+                    </div>
+                </div>
+                <span class="order-list__item-price">
+                    {{ '$' + product.price }}
+                </span>
+            </div>
+        </ng-template>
+    </p-orderList>
+
+</div> -->
+<div class="product-list">
+    <p-listbox 
+    [options]="products" 
+    optionLabel="title"
+    
+    [filter]="true"
+    filterBy="title"
+    [listStyle]="{'max-height': '400px', }" 
+    >
+    <ng-template pTemplate="header">
+        <h3>Top Products</h3>
+    </ng-template>
+    <ng-template let-product pTemplate="item">
+        <div class="product-list__item">
+            <img 
+                src="{{ product.image }}" 
+                alt="{{ product.title }}" 
+                class="product-list__image" 
+            />
+            <div class="product-list__details">
+                <span class="product-list__title">{{ product.title }}</span>
+                <div class="product-list__category">
+                    <i class="pi pi-tag product-list__icon"></i>
+                    <span>{{ product.category }}</span>
+                </div>
+            </div>
+            <span class="product-list__price">
+                {{ '$' + product.price }}
+            </span>
+        </div>
+
+    </ng-template>
+</p-listbox>
+
+</div>
 
