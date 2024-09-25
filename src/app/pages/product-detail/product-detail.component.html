@@ -1,1 +1,9 @@
-<p>product-detail works!</p>
+<div >
+    <h2>{{ product.title }}</h2>
+    <img style="width: 200px;" src="{{product.image}}
+    " style="height: 200px" alt="{{product.title}}">
+    <p><strong>Price:</strong> {{ product.price }}</p>
+    <p><strong>Category:</strong> {{ product.category }}</p>
+    <p><strong>Description:</strong> {{ product.description }}</p>
+    <p><strong>Rating:</strong> {{ product.rating.rate }} / 5 ({{ product.rating.count }} reviews)</p>
+</div>

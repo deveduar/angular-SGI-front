@@ -6,6 +6,8 @@ import { OrderListModule } from 'primeng/orderlist';
 import { InventoryService } from '../adapters/api/inventory.service';
 import { Product } from '../domain/models/product';
 import { ListboxModule } from 'primeng/listbox';
+import { ProductDetailComponent } from '../pages/product-detail/product-detail.component';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -16,7 +18,8 @@ import { ListboxModule } from 'primeng/listbox';
     ButtonModule,
     InventoryTableComponent,
     OrderListModule,
-    ListboxModule
+    ListboxModule,
+    ProductDetailComponent, FormsModule
   
   ],
   templateUrl: './home.component.html',
@@ -25,7 +28,8 @@ import { ListboxModule } from 'primeng/listbox';
 export class HomeComponent {
   products!: Product[];
   errorMessage: string | null = null;
- 
+  selectedProduct!: Product;
+
   constructor(private inventoryService: InventoryService){}
 
   ngOnInit(): void {
@@ -36,12 +40,19 @@ export class HomeComponent {
         this.products = data.slice(0, 20);
         this.errorMessage = null;
         // console.log(data)
+        if (this.products.length > 0) {
+          this.selectedProduct = this.products[0];  
+          this.onProductSelect({ value: this.selectedProduct }); 
+        }
       },
         error: (err) => {
           this.errorMessage = `ERROR: ${err.message}`;
       }
       }
     );
-
   };
+
+  onProductSelect(event: any) {
+    this.selectedProduct = event.value;
+  }
 }

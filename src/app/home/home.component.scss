@@ -194,11 +194,52 @@
 
 ::ng-deep .p-listbox {
   background-color: var(--surface-card); 
-  height: 100%;
+  // height: 100%;
   border-radius: var(--border-radius);
   box-shadow: 0 4px 6px var(--surface-overlay); 
-  overflow: auto; 
-  max-width: 450px;
+
+  display: flex;
+  flex-direction: column;
+  // width: 100%;
+  // width: 380px;
+  // max-height: 500px;
+  // height: 100%;
+  // width: 100%;
+  // width: 400px;
+  width: 100%;
+
+
+
+  @media (max-width: 768px) {
+  width: 100%;
+  // overflow: auto; 
+  flex-grow: 1;
+    
+  }
+}
+
+// ::ng-deep .p-listbox-list {
+//   // max-height: inherit;
+//   // max-height: 900px;
+//   // overflow: auto;
+//   // flex-grow: 0;
+//   // display: flex;
+//   // background-color: red;
+//   // height: 100%;
+//   // width: 100%;
+//   // height: 700px;
+//   // width: 400px;
+
+//   // flex-grow: 1;
+
+// }
+
+
+::ng-deep .p-listbox-list-wrapper {
+  flex-grow: 1; 
+  overflow: auto;
+  // height: 800px;
+  // width: 400px;
 
 }
 
@@ -209,9 +250,32 @@
   border: none;
 }
 
+.product-container {
+  display: flex;
+  gap: 2rem; 
+  width: 100%;
+  // padding: 1rem 0;
+  padding-top: 1rem;
+  height: 100%;
+  // height: 700px;
+  // align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
   .product-list {
-    padding: 1rem 0;
+    // padding: 1rem 0;
+    flex-grow: 1;
+    // height: 700px;
+    // width: 400px;
+    width: 100%;
+
     
+
+
     &__item {
       display: flex;
       align-items: center;
@@ -277,3 +341,35 @@
       // white-space: nowrap;
     }
   }
+
+.product-view {
+  background: var(--surface-card);
+  // display: flex;
+  // flex-direction: column;
+  // flex-grow: 0;
+  // flex-grow: 1;
+  background-color: var(--surface-card);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px var(--surface-overlay);
+  padding: 0 1rem;
+  overflow: auto;
+  // max-height: 700px;
+  // height: 700px;
+  // width: 400px;
+  width: 100%;
+  // max-height: 60%;
+  // min-height: 700px;
+  max-height: 705px;
+
+  @media (max-width: 768px) {
+    // height: 700px; 
+  // width: 400px;
+  // height: 50%;
+
+  }
+
+  &__title {
+    font-weight: bold;
+
+  }
+}

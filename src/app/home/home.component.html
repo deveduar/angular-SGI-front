@@ -97,39 +97,50 @@
     </p-orderList>
 
 </div> -->
-<div class="product-list">
-    <p-listbox 
-    [options]="products" 
-    optionLabel="title"
-    
-    [filter]="true"
-    filterBy="title"
-    [listStyle]="{'max-height': '400px', }" 
-    >
-    <ng-template pTemplate="header">
-        <h3>Top Products</h3>
-    </ng-template>
-    <ng-template let-product pTemplate="item">
-        <div class="product-list__item">
-            <img 
-                src="{{ product.image }}" 
-                alt="{{ product.title }}" 
-                class="product-list__image" 
-            />
-            <div class="product-list__details">
-                <span class="product-list__title">{{ product.title }}</span>
-                <div class="product-list__category">
-                    <i class="pi pi-tag product-list__icon"></i>
-                    <span>{{ product.category }}</span>
-                </div>
-            </div>
-            <span class="product-list__price">
-                {{ '$' + product.price }}
-            </span>
-        </div>
 
-    </ng-template>
-</p-listbox>
+<div class="product-container">
+    <div class="product-list">
+        <p-listbox 
+        [options]="products" 
+        optionLabel="title"
+        (onChange)="onProductSelect($event)"
+        [filter]="true"
+        filterBy="title"
+        [listStyle]="{'max-height': '600px',}" 
+        [(ngModel)]="selectedProduct" 
+        >
+        <ng-template pTemplate="header">
+            <h3>Product picker</h3>
+        </ng-template>
+        <ng-template let-product pTemplate="item">
+            <div class="product-list__item">
+                <img 
+                    src="{{ product.image }}" 
+                    alt="{{ product.title }}" 
+                    class="product-list__image" 
+                />
+                <div class="product-list__details">
+                    <span class="product-list__title">{{ product.title }}</span>
+                    <div class="product-list__category">
+                        <i class="pi pi-tag product-list__icon"></i>
+                        <span>{{ product.category }}</span>
+                    </div>
+                </div>
+                <span class="product-list__price">
+                    {{ '$' + product.price }}
+                </span>
+            </div>
+    
+        </ng-template>
+    </p-listbox>
+    
+    </div>
+    <div class="product-view">
+    <h3 class="product-view__title">Product details</h3>
+        <app-product-detail *ngIf="selectedProduct" [product]="selectedProduct"></app-product-detail>
+
+    </div>
 
 </div>
+
 

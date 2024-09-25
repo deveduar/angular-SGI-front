@@ -1,4 +1,4 @@
-import { Component, viewChild } from '@angular/core';
+import { Component} from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';

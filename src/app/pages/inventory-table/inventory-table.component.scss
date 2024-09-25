@@ -11,6 +11,10 @@
 //     display: block;
 // }
 
+::ng-deep .p-toolbar {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
 
 .card {
     padding-bottom: 1rem;
@@ -30,6 +34,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem 0;
+    // padding-top: 1rem;
+   
 }
 
 .dialog-image {
@@ -42,7 +48,7 @@
 
 .toolbar-container {
     // background-color: red;
-    padding: 2rem;
+    // padding: 2rem;
 }
 
 .toolbar-button {

@@ -40,25 +40,42 @@
                 <div class="product-grid__item" *ngFor="let item of products">
                     <div class="product-grid__image">
                         <img [src]="item.image" [alt]="item.title" />
+
                     </div>
                     <div class="product-grid__details">
-                        <span class="product-grid__category">{{ item.category }}</span>
-                        <div [routerLink]="['/product', item.id]" class="product-grid__title">{{ item.title }}</div>
+                        <div class="product-grid__category">
+                            <i class="pi pi-tag product-grid__icon"></i>
+                            <span >{{ item.category }}</span>
+                        </div>
+                        <p-tag severity="success" value="Stock" class="product-grid__tag"></p-tag>
                     </div>
-                    <div class="product-grid__status">
+
+
+                   
+                    <div class="product-grid__score">
+                        <div [routerLink]="['/product', item.id]" class="product-grid__title">{{ item.title }}</div>
+                        <div class="product-grid__rating">
+                            <p-rating [(ngModel)]="item.rating.rate" [readonly]="true" [cancel]="false" />
+                        </div>
+
+                    </div>
+                    
+                    
+                    <!-- <div class="product-grid__status">
                         <div class="product-grid__rate">
                             <div class="product-grid__rating">
                                 <span>{{ item.rating.rate }}</span>
                                 <i class="pi pi-star-fill"></i>
                             </div>
-                            <p-tag severity="success" value="Stock" class="product-grid__tag"></p-tag>
                         </div>
-                        <div class="product-grid__price">{{ '€' + item.price }}</div>
-                    </div>
+                    </div> -->
                     <div class="product-grid__actions">
+                        <div class="product-grid__price">{{ '€' + item.price }}</div>
+
                         <div class="product-grid__buttons">
-                            <p-button icon="pi pi-heart" [outlined]="true"></p-button>
-                            <p-button icon="pi pi-shopping-cart" label="Buy Now" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                            <!-- <p-button icon="pi pi-heart" [outlined]="true"></p-button> -->
+
+                            <p-button icon="pi pi-shopping-cart" label="" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"></p-button>
                         </div>
                     </div>
                 </div>
@@ -71,12 +88,18 @@
                         <img class="product-list__image" [src]="item.image" [alt]="item.title" />
                     </div>
                     <div class="product-list__details">
-                        <span class="product-list__category">{{ item.category }}</span>
+                        <div class="product-list__category">
+                            <i class="pi pi-tag product-list__icon"></i>
+                            <span >{{ item.category }}</span>
+                        </div>
                         <div class="product-list__title">{{ item.title }}</div>
                         <div class="product-list__tag-rate">
                             <div class="product-list__rating-container">
-                                <span class="product-list__rating">{{ item.rating.rate }}</span>
-                                <i class="pi pi-star-fill product-list__star"></i>
+                                <!-- <span class="product-list__rating">{{ item.rating.rate }}</span>
+                                <i class="pi pi-star-fill product-list__star"></i> -->
+                                <div class="product-list__rating">
+                                    <p-rating [(ngModel)]="item.rating.rate" [readonly]="true" [cancel]="false" />
+                                </div>
                             </div>
                             <p-tag class="product-list__tag" severity="success" value="Stock" />
                         </div>
@@ -85,7 +108,7 @@
                         <div class="product-list__price">{{ '€' + item.price }}</div>
                         <div class="product-list__buttons">
                             <p-button icon="pi pi-shopping-cart" class="product-list__buy-button" label="Buy Now" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'" />
-                            <p-button icon="pi pi-heart" [outlined]="true" class="product-list__wishlist-button" />
+                            <!-- <p-button icon="pi pi-heart" [outlined]="true" class="product-list__wishlist-button" /> -->
                         </div>
                     </div>
                 </div>
