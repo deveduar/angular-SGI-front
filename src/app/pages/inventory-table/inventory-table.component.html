@@ -17,19 +17,14 @@
             />
         </ng-template>
 
-        <!-- <ng-template pTemplate="right">
-            <p-fileUpload 
-                mode="basic" 
-                accept="image/*" 
-                [maxFileSize]="1000000" 
-                label="Import" 
-                chooseLabel="Import" 
-                class="mr-2 inline-block" />
+        <ng-template pTemplate="right">
+        
             <p-button
+            (onClick)="exportToCSV()"
                 severity="help" 
                 label="Export" 
-                icon="pi pi-upload" />
-        </ng-template> -->
+                icon="pi pi-download" />
+        </ng-template>
     </p-toolbar>
 
     <p-table 

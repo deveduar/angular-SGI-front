@@ -1,31 +1,32 @@
 import { Component} from '@angular/core';
-import { TableModule } from 'primeng/table';
 import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';
-
-import { ButtonModule } from 'primeng/button';
-import { TagModule } from 'primeng/tag';
-import { RatingModule } from 'primeng/rating';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ViewChild } from '@angular/core';
+
+import { Table } from 'primeng/table';
+import { ConfirmationService, MessageService } from 'primeng/api'
+
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { TagModule } from 'primeng/tag';
+import { Rating, RatingModule } from 'primeng/rating';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
-import { ViewChild } from '@angular/core';
-import { Table } from 'primeng/table';
-import { ConfirmationService, MessageService } from 'primeng/api'
+
 import { DialogModule } from 'primeng/dialog';
 import { RippleModule } from 'primeng/ripple';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-// import { FileUploadModule } from 'primeng/fileupload';
 import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
-
-
+// import { FileUploadModule } from 'primeng/fileupload';
+import * as Papa from 'papaparse';
 
 @Component({
   selector: 'app-inventory-table',
@@ -181,5 +182,29 @@ export class InventoryTableComponent {
         ? Math.max(...this.products.map(product => product.id)) + 1 
         : 1;
   }
+
+  exportToCSV(): void {
+    
+    const formattedProducts = this.products.map(product => {
+      const clonedProduct: any = { 
+        ...product, 
+        Rate: product.rating?.rate, 
+        RatingCount: product.rating?.count 
+      };
+  
+      delete clonedProduct.rating;
+      return clonedProduct;
+    });
+
+    const csv = Papa.unparse(formattedProducts);
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'products.csv');
+    a.click();
+  }
+
+
 
 }
