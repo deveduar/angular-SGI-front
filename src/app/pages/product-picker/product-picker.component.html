@@ -28,8 +28,12 @@
     </p-orderList>
 
 </div> -->
+<div *ngIf="errorMessage; else productList">
+    <div class="error-message">No products Found</div>
+  </div>
 
-<div class="product-container">
+<ng-template #productList>
+<div class="product-container" *ngIf="products && products.length > 0; else noProducts">
     <div class="product-list">
         <p-listbox 
         [options]="products" 
@@ -67,10 +71,15 @@
     
     </div>
     <div class="product-view">
-    <h3 class="product-view__title">Product details</h3>
+        <h3 class="product-view__title">Product details</h3>
         <app-product-detail *ngIf="selectedProduct" [product]="selectedProduct"></app-product-detail>
-
     </div>
-
 </div>
 
+    <ng-template #noProducts>
+        <div class="no-products">
+        <h3>No products found</h3>
+        <p>Please try again later.</p>
+        </div>
+    </ng-template>
+</ng-template>
