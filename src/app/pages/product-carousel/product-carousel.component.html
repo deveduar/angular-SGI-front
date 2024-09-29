@@ -1,0 +1,34 @@
+<div class="product-carousel">
+<p-carousel  
+    [value]="products" 
+    [numVisible]="6" 
+    [numScroll]="1" 
+    [responsiveOptions]="responsiveOptions">
+        <ng-template let-product pTemplate="item">
+            <div class="product-carousel__item">
+                <div class="product-carousel__image-container">
+                    <img 
+                        src="{{ product.image }}" 
+                        [alt]="product.title" 
+                        class="product-carousel__image" />
+                    <p-tag 
+                        [value]="product.category" 
+                        severity="info" 
+                        class="product-carousel__tag" />
+                </div>
+                <div class="product-carousel__title">
+                    {{ product.title }}
+                </div>
+                <div class="product-carousel__footer">
+                    <div class="product-carousel__price">
+                        {{ product.price | currency }}
+                    </div>
+                    <div class="product-carousel__actions">
+                        <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
+                        <p-button icon="pi pi-shopping-cart" class="product-carousel__buy-button" />
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+</p-carousel>
+</div>

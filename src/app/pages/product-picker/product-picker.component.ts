@@ -7,6 +7,7 @@ import { Product } from '../../domain/models/product';
 import { ListboxModule } from 'primeng/listbox';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { FormsModule } from '@angular/forms'
+import { SkeletonModule } from 'primeng/skeleton';
 
 
 @Component({
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms'
     OrderListModule,
     ListboxModule,
     ProductDetailComponent, 
-    FormsModule
+    FormsModule,
+    SkeletonModule
   
   ],
   templateUrl: './product-picker.component.html',
@@ -29,6 +31,8 @@ export class ProductPickerComponent {
   errorMessage: string | null = null;
   selectedProduct!: Product;
 
+  loading = true;
+
   constructor(private inventoryService: InventoryService){}
 
   ngOnInit(): void {
@@ -38,6 +42,7 @@ export class ProductPickerComponent {
         next: (data) => {
         this.products = data.slice(0, 20);
         this.errorMessage = null;
+        this.loading = false;
         // console.log(data)
         if (this.products.length > 0) {
           this.selectedProduct = this.products[0];  
@@ -45,7 +50,13 @@ export class ProductPickerComponent {
         }
       },
         error: (err) => {
-          this.errorMessage = `ERROR: ${err.message}`;
+          // this.errorMessage = `ERROR: ${err.message}`;
+          // this.loading = false;
+          setTimeout(() => {
+            this.errorMessage = `ERROR: ${err.message}`;
+            this.loading = false;  // Stop loading after showing the error
+          }, 3000);
+
       }
       }
     );

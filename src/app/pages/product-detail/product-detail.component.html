@@ -1,9 +1,19 @@
-<div >
-    <h2>{{ product?.title }}</h2>
-    <img style="width: 200px;" src="{{product?.image}}
-    " style="height: 200px" alt="{{product?.title}}">
-    <p><strong>Price:</strong> {{ product?.price }}</p>
-    <p><strong>Category:</strong> {{ product?.category }}</p>
-    <p><strong>Description:</strong> {{ product?.description }}</p>
-    <p><strong>Rating:</strong> {{ product?.rating?.rate }} / 5 ({{ product?.rating?.count }} reviews)</p>
+<div class="product-details">
+    <h2 class="product-details__title">{{ product?.title }}</h2>
+    <img class="product-details__image" src="{{product?.image}}" alt="{{product?.title}}">
+    <p class="product-details__price"><strong>Price:</strong> {{ product?.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+    <p class="product-details__category">
+        <strong>Category:</strong> 
+        <i class="pi pi-tag product-details__category-icon"></i>
+        {{ product?.category }}</p>
+    <p class="product-details__description"><strong>Description:</strong> {{ product?.description }}</p>
+    <p class="product-details__rating">
+        <strong>Rating:</strong> {{ product?.rating?.rate }} / 5 ({{ product?.rating?.count }} reviews)
+        <i class="pi pi-star-fill rating-icon"></i>
+    </p>
+
+</div>
+<div class="products-related">
+    <app-product-carousel></app-product-carousel>
+
 </div>
