@@ -16,13 +16,21 @@ import { RouterModule } from '@angular/router';
   styleUrl: './product-carousel.component.scss'
 })
 export class ProductCarouselComponent {
-  products!: Product[];
+  products: Product[] = [];
+  // products!: Product[];
+
 
   @Input() context: 'detail' | 'page' = 'page'; 
+  @Input() category: string | undefined;
+  @Input() excludedProduct?: Product;
 
+  // @Input() selectedCategory: string | undefined; 
   responsiveOptions: any[] | undefined;
   errorMessage: string | null = null;
   
+  filteredProducts: Product[] = [];
+
+
   constructor(private  inventoryService: InventoryService) {}
 
   ngOnInit(): void {
@@ -31,6 +39,7 @@ export class ProductCarouselComponent {
       next: (data) => {
         this.products = data;
         // this.setResponsiveOptions();
+        this.filterProductsByCategory();
       },
       error: (err) => {
         this.errorMessage = `ERROR: ${err.message}`;
@@ -41,8 +50,24 @@ export class ProductCarouselComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['context']) {
-      // Detecta cambios en el contexto y actualiza las responsiveOptions
       this.setResponsiveOptions();
+    }
+    if (changes['category'] || changes['excludedProduct']) {
+      this.filterProductsByCategory();
+    }
+  }
+
+  filterProductsByCategory(): void {
+    // console.log(this.category)
+    if (this.products.length > 0) {
+      if (this.category) {
+        this.filteredProducts = this.products.filter(product => product.category === this.category);
+      } else {
+        this.filteredProducts = [...this.products]; 
+      }
+    }
+    if (this.excludedProduct) {
+      this.filteredProducts = this.filteredProducts.filter(product => product.id !== this.excludedProduct?.id);
     }
   }
 

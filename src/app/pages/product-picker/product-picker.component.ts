@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output  } from '@angular/core';
 import { OrderListModule } from 'primeng/orderlist';
 import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';
@@ -30,18 +30,21 @@ import { ProductCarouselComponent } from '../product-carousel/product-carousel.c
 export class ProductPickerComponent {
   products!: Product[];
   errorMessage: string | null = null;
-  selectedProduct!: Product;
+  // selectedProduct!: Product;
+  // selectedProduct: Product | null = this.products?.[0];
+  selectedProduct: Product | null = null;
 
   loading = true;
 
+  lastSelectedProduct: Product | null = this.selectedProduct;
+  
   constructor(private inventoryService: InventoryService){}
 
   ngOnInit(): void {
     this.inventoryService.getProducts().subscribe(
-
       {     
         next: (data) => {
-        this.products = data.slice(0, 20);
+        this.products = data;
         this.errorMessage = null;
         this.loading = false;
         // console.log(data)
@@ -64,6 +67,11 @@ export class ProductPickerComponent {
   };
 
   onProductSelect(event: any) {
-    this.selectedProduct = event.value;
+    if (event.value) {
+      this.selectedProduct = event.value;
+    } else {
+      this.selectedProduct = this.lastSelectedProduct;
+    }
+    this.lastSelectedProduct = this.selectedProduct;
   }
 }
