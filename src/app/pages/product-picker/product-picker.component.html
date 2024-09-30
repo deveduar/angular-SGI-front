@@ -99,8 +99,13 @@
         </div>
         <app-product-detail *ngIf="selectedProduct" [product]="selectedProduct"></app-product-detail>
     </div>
+    
 </div>
+<div class="products-related">
+    <h2>Top Products</h2>
+    <app-product-carousel [context]="'page'"></app-product-carousel>
 
+</div>
 <ng-template #noProducts>
     <div class="no-products">
     <h3>No products found</h3>

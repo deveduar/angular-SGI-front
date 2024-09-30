@@ -8,7 +8,7 @@ import { ListboxModule } from 'primeng/listbox';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { FormsModule } from '@angular/forms'
 import { SkeletonModule } from 'primeng/skeleton';
-
+import { ProductCarouselComponent } from '../product-carousel/product-carousel.component';
 
 @Component({
   selector: 'app-product-picker',
@@ -20,7 +20,8 @@ import { SkeletonModule } from 'primeng/skeleton';
     ListboxModule,
     ProductDetailComponent, 
     FormsModule,
-    SkeletonModule
+    SkeletonModule,
+    ProductCarouselComponent
   
   ],
   templateUrl: './product-picker.component.html',

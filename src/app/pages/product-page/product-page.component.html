@@ -11,11 +11,10 @@
         <strong>Rating:</strong> {{ product?.rating?.rate }} / 5 ({{ product?.rating?.count }} reviews)
         <i class="pi pi-star-fill rating-icon"></i>
     </p>
-    <div class="products-related">
-        <h2>Related Products</h2>
-        <app-product-carousel [context]="'detail'"></app-product-carousel>
-    
-    
-    </div>
-</div>
 
+</div>
+<div class="products-related">
+    <h2>Related Products</h2>
+    <app-product-carousel [context]="'page'"></app-product-carousel>
+
+</div>

@@ -1,0 +1,119 @@
+.product-details {
+    // background-color: var(--surface-card);
+    // border-radius: var(--border-radius);
+    // box-shadow: 0 4px 6px var(--surface-overlay);
+    padding: 0 1rem;ç
+    // padding: 2rem ;
+    // font-family: var(--font-family);
+    // color: var(--text-color);
+    // background-color: red;
+    
+    &__title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    //   min-height: 3rem;
+    //   color: var(--primary-color);
+    }
+  
+    &__image {
+    //   max-width: 60%;
+    //   max-height: 60%;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    overflow: hidden;
+      
+    //   height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 4px var(--surface-overlay);
+    //   margin-bottom: 1rem;
+    }
+  
+    &__price,
+    &__category,
+    &__description,
+    &__rating {
+      margin-bottom: 0.5rem;
+      font-size: var(--font-size-base);
+    }
+  
+    &__price {
+      font-size: 1.2rem;
+    //   color: var(--primary-color);
+      font-weight: bold;
+  
+      strong {
+        // color: var(--primary-color-text);
+      }
+    }
+  
+    &__category {
+      text-transform: uppercase;
+      color: var(--text-color-secondary);
+  
+      strong {
+        color: var(--text-color);
+      }
+
+			&-icon {
+			margin-left: 0.5rem; 
+			color: var(--primary-color); 
+			font-size: 1rem; 
+			}
+    }
+  
+    &__description {
+      font-size: var(--font-size-base);
+      color: var(--text-color-secondary);
+  
+      strong {
+        color: var(--text-color);
+      }
+    }
+  
+    &__rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  
+      strong {
+        color: var(--text-color);
+      }
+  
+      .rating-icon {
+        color: var(--yellow-500);
+        font-size: 1rem;
+      }
+    }
+  
+    @media (max-width: 768px) {
+    //   padding: 1rem;
+      
+      &__title {
+        font-size: 1.2rem;
+      }
+  
+      &__image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        overflow: hidden;
+      }
+  
+      &__price {
+        font-size: 1rem;
+      }
+  
+      &__description,
+      &__category,
+      &__rating {
+        font-size: var(--font-size-small);
+      }
+    }
+  }
+
+.products-related {
+ 
+}
+  
