@@ -24,6 +24,9 @@ export class ProductCarouselComponent {
   @Input() category: string | undefined;
   @Input() excludedProduct?: Product;
 
+  @Input() resetPagination: boolean = false;
+  page: number = 0;
+
   // @Input() selectedCategory: string | undefined; 
   responsiveOptions: any[] | undefined;
   errorMessage: string | null = null;
@@ -52,8 +55,11 @@ export class ProductCarouselComponent {
     if (changes['context']) {
       this.setResponsiveOptions();
     }
-    if (changes['category'] || changes['excludedProduct']) {
+    if (changes['category'] || changes['excludedProduct'] || changes['resetPagination']) {
       this.filterProductsByCategory();
+      if (this.resetPagination) {
+        this.page = 0; 
+      }
     }
   }
 

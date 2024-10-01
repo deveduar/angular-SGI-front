@@ -3,7 +3,10 @@
     [value]="filteredProducts" 
     [numVisible]="6" 
     [numScroll]="1" 
-    [responsiveOptions]="responsiveOptions">
+    [responsiveOptions]="responsiveOptions"
+    [page]="page" 
+    (onPage)="page = $event.page !== undefined ? $event.page : 0"
+    >
         <ng-template let-product pTemplate="item">
             <div class="product-carousel__item">
                 <div class="product-carousel__image-container">
