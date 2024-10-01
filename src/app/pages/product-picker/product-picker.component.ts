@@ -47,7 +47,6 @@ export class ProductPickerComponent {
         this.products = data;
         this.errorMessage = null;
         this.loading = false;
-        // console.log(data)
         if (this.products.length > 0) {
           this.selectedProduct = this.products[0];  
           this.onProductSelect({ value: this.selectedProduct }); 
@@ -58,7 +57,7 @@ export class ProductPickerComponent {
           // this.loading = false;
           setTimeout(() => {
             this.errorMessage = `ERROR: ${err.message}`;
-            this.loading = false;  // Stop loading after showing the error
+            this.loading = false; 
           }, 3000);
 
       }

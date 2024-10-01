@@ -1,44 +1,3 @@
-<!-- <div class="order-list">
-    <p-orderList 
-        [value]="products" 
-        [listStyle]="{ height: '25rem' }"
-        [dragdrop]="true" 
-        filterBy="title"
-        header="List of Products"
-        controlsPosition="right"
-        >
-        <ng-template let-product pTemplate="item">
-            <div class="order-list__item">
-                <img 
-                    src="{{product.image}}" 
-                    [alt]="product.title" 
-                    class="order-list__item-image" />
-                <div class="order-list__item-info">
-                    <span class="order-list__item-name">{{ product.title }}</span>
-                    <div class="order-list__item-category">
-                        <i class="pi pi-tag order-list__icon"></i>
-                        <span>{{ product.category }}</span>
-                    </div>
-                </div>
-                <span class="order-list__item-price">
-                    {{ '$' + product.price }}
-                </span>
-            </div>
-        </ng-template>
-    </p-orderList>
-
-</div> -->
-
-
-
-
-
-
-
-
-
-
-
 <div *ngIf="loading; else productList">
     <!-- Skeleton for the listbox -->
     <div class="product-container">
@@ -82,19 +41,14 @@
     
     </div>
     <div class="product-view">
-        <div class="product-view__title-container">
+        <!-- <div class="product-view__title-container">
             <h3 class="product-view__title">Product details</h3>
 
-        </div>
+        </div> -->
         <app-product-detail *ngIf="selectedProduct" [product]="selectedProduct"></app-product-detail>
     </div>
-    
 </div>
-<div class="products-related">
-    <h2>Top Products</h2>
-    <app-product-carousel  [context]="'page'"></app-product-carousel>
 
-</div>
 <ng-template #noProducts>
     <div class="no-products">
     <h3>No products found</h3>
@@ -103,8 +57,41 @@
 </ng-template>
 </ng-template>
 
-<!-- p-listbox detailed -->
 
+<!-- order list -->
+<!-- <div class="order-list">
+    <p-orderList 
+        [value]="products" 
+        [listStyle]="{ height: '25rem' }"
+        [dragdrop]="true" 
+        filterBy="title"
+        header="List of Products"
+        controlsPosition="right"
+        >
+        <ng-template let-product pTemplate="item">
+            <div class="order-list__item">
+                <img 
+                    src="{{product.image}}" 
+                    [alt]="product.title" 
+                    class="order-list__item-image" />
+                <div class="order-list__item-info">
+                    <span class="order-list__item-name">{{ product.title }}</span>
+                    <div class="order-list__item-category">
+                        <i class="pi pi-tag order-list__icon"></i>
+                        <span>{{ product.category }}</span>
+                    </div>
+                </div>
+                <span class="order-list__item-price">
+                    {{ '$' + product.price }}
+                </span>
+            </div>
+        </ng-template>
+    </p-orderList>
+
+</div> -->
+
+
+<!-- p-listbox detailed -->
 <!-- <p-listbox 
 [options]="products" 
 optionLabel="title"

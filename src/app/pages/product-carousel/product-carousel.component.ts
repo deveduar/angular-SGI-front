@@ -26,8 +26,8 @@ export class ProductCarouselComponent {
 
   @Input() resetPagination: boolean = false;
   page: number = 0;
+  @Input() showTopProducts: boolean = false;
 
-  // @Input() selectedCategory: string | undefined; 
   responsiveOptions: any[] | undefined;
   errorMessage: string | null = null;
   
@@ -65,9 +65,23 @@ export class ProductCarouselComponent {
   }
 
   filterProductsByCategory(): void {
-    // console.log(this.category)
+    // if (this.products.length > 0) {
+    //   if (this.category) {
+    //     this.filteredProducts = this.products.filter(product => product.category === this.category);
+    //   } else {
+    //     this.filteredProducts = [...this.products]; 
+    //   }
+    // }
+    // if (this.excludedProduct) {
+    //   this.filteredProducts = this.filteredProducts.filter(product => product.id !== this.excludedProduct?.id);
+    // }
     if (this.products.length > 0) {
-      if (this.category) {
+      if (this.showTopProducts) {
+        // Filtrar productos por rating
+        this.filteredProducts = [...this.products]
+          .sort((a, b) => b.rating.rate - a.rating.rate)
+          .slice(0, 12);
+      } else if (this.category) {
         this.filteredProducts = this.products.filter(product => product.category === this.category);
       } else {
         this.filteredProducts = [...this.products]; 
@@ -76,6 +90,7 @@ export class ProductCarouselComponent {
     if (this.excludedProduct) {
       this.filteredProducts = this.filteredProducts.filter(product => product.id !== this.excludedProduct?.id);
     }
+
   }
 
   handlePageChange(pageNumber: number | undefined): void {

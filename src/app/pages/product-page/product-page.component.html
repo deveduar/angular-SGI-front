@@ -1,5 +1,11 @@
+<p-breadcrumb 
+class="max-w-full" 
+[model]="items" 
+[home]="home" />
 <div class="product-page">
+
     <div class="product-page-details">
+
         <h2 class="product-page-details__title">{{ product?.title }}</h2>
         <img class="product-page-details__image" src="{{product?.image}}" alt="{{product?.title}}">
         <p class="product-details-page__price"><strong>Price:</strong> {{ product?.price | currency:'EUR':'symbol':'1.2-2' }}</p>

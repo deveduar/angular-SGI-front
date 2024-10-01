@@ -4,6 +4,7 @@ import { ProductPickerComponent } from '../pages/product-picker/product-picker.c
 import { InventoryService } from '../adapters/api/inventory.service';
 import { Product } from '../domain/models/product';
 import { ProductDetailComponent } from '../pages/product-detail/product-detail.component';
+import { ProductCarouselComponent } from '../pages/product-carousel/product-carousel.component';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { ProductDetailComponent } from '../pages/product-detail/product-detail.c
   imports: [
     CommonModule,
     ProductDetailComponent, 
-    ProductPickerComponent
+    ProductPickerComponent,
+    ProductCarouselComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

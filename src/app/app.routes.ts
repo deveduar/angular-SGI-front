@@ -6,6 +6,7 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { InventoryTableComponent } from './pages/inventory-table/inventory-table.component';
 
 import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
 
 export const routes: Routes = [
     {
@@ -23,5 +24,6 @@ export const routes: Routes = [
     {
         path: 'product/:id',
         component: ProductPageComponent
-    }
+    },
+    { path: 'category/:category', component: CategoryPageComponent }
 ];
