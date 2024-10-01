@@ -1,11 +1,11 @@
 <div class="product-carousel">
 <p-carousel  
     [value]="filteredProducts" 
-    [numVisible]="6" 
-    [numScroll]="1" 
+    [numVisible]="3" 
+    [numScroll]="3" 
     [responsiveOptions]="responsiveOptions"
     [page]="page" 
-    (onPage)="page = $event.page !== undefined ? $event.page : 0"
+    (onPage)="handlePageChange($event.page)"
     >
         <ng-template let-product pTemplate="item">
             <div class="product-carousel__item">

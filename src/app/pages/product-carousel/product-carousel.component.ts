@@ -59,6 +59,7 @@ export class ProductCarouselComponent {
       this.filterProductsByCategory();
       if (this.resetPagination) {
         this.page = 0; 
+        // this.resetPagination = false;
       }
     }
   }
@@ -76,6 +77,16 @@ export class ProductCarouselComponent {
       this.filteredProducts = this.filteredProducts.filter(product => product.id !== this.excludedProduct?.id);
     }
   }
+
+  handlePageChange(pageNumber: number | undefined): void {
+  if (pageNumber !== undefined) {
+    setTimeout(() => {
+      this.page = pageNumber;
+    });
+  } else {
+    this.page = 0;
+  }
+}
 
 
   setResponsiveOptions(): void {
