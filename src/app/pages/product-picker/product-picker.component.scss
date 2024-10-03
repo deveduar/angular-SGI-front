@@ -30,7 +30,7 @@
     }
   
     &__item-info {
-      flex: 1; /* Ocupa el espacio restante */
+      flex: 1; 
       display: flex;
       flex-direction: column;
       gap: var(--inline-spacing, 0.5rem);
@@ -51,17 +51,17 @@
       display: flex;
       align-items: center;
       gap: var(--inline-spacing, 0.5rem);
-      color: var(--text-color-secondary); /* Texto secundario */
+      color: var(--text-color-secondary); 
     }
   
     &__icon {
-      font-size: 0.875rem; /* Tamaño de ícono */
-      color: var(--primary-color); /* Usa el color primario del tema */
+      font-size: 0.875rem; 
+      color: var(--primary-color); 
     }
   
     &__item-price {
       font-weight: bold;
-      color: var(--text-color); /* Texto de precio */
+      color: var(--text-color); 
     }
   }
   
@@ -71,6 +71,8 @@
   padding: 0;
   padding-left: 1rem;
   padding-right: 1rem;
+  background-color: var(--surface-card); 
+
   // padding: 0 1rem;
   // padding-bottom: 1rem;
 
@@ -237,9 +239,11 @@
   // flex-direction: column;
   // flex-grow: 0;
   // flex-grow: 1;
+
   background-color: var(--surface-card);
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 6px var(--surface-overlay);
+  // box-shadow: 0 4px 6px var(--surface-overlay);
+  
   // padding: 0 1rem;
   // max-height: 700px;
   // height: 700px;

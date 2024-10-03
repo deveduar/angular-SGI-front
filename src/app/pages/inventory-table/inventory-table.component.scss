@@ -11,10 +11,28 @@
 //     display: block;
 // }
 
+.card {
+// background-color: red;
+}
+
 ::ng-deep .p-toolbar {
     padding: 1rem;
     margin-bottom: 1rem;
+    background-color: var(--surface-card);
 }
+
+::ng-deep .p-datatable-header {
+    padding: 1rem;
+    background-color: var(--surface-card);
+}
+::ng-deep .p-datatable-footer {
+    background-color: var(--surface-card);
+}
+
+th {
+    background-color: var(--surface-card);
+}
+
 
 .card {
     padding-bottom: 1rem;
@@ -47,10 +65,10 @@
   overflow: hidden
 }
 
-// .toolbar-container {
-//     // background-color: red;
-//     // padding: 2rem;
-// }
+.toolbar-container {
+    // background-color: red;
+    // padding: 2rem;
+}
 
 .toolbar-button {
     margin-right: 1rem;

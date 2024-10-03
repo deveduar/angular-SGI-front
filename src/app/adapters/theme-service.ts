@@ -12,7 +12,6 @@ export class ThemeService {
     if (isPlatformBrowser(this.platformId)) {
       const themeLink = document.getElementById('app-theme') as HTMLLinkElement;
       if (themeLink) {
-        // Aquí aseguramos que la ruta apunte a la carpeta assets/themes
         themeLink.href = `assets/themes/${theme}/theme.css`;
       } else {
         console.error('Theme link element not found');

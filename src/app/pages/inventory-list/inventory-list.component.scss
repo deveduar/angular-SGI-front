@@ -9,6 +9,8 @@
 
 ::ng-deep .p-dataview-header  {
   border-radius: 8px;
+  background-color: var(--surface-card);
+
 }
 
 .product-nav {
@@ -75,7 +77,7 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
   padding: 1rem 0;
-  background-color: var(--surface-0);
+  background-color: var(--surface-ground);
 
   &__item {
     display: flex;
@@ -190,7 +192,7 @@
   &__price {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #dcdcdc;
+    color: var(--text-color);
     // text-align: center;
   }
 
@@ -235,7 +237,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: var(--surface-0);
+  background-color: var(--surface-ground);
   padding: 1rem 0;
 
   &__item {
