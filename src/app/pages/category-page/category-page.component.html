@@ -1,9 +1,64 @@
-<h2>{{ category | titlecase }} Products</h2>
+<!-- <h2>{{ category | titlecase }} Products</h2> -->
 
-<p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+<div class="categories-page">
+  <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
 
-<p-dataView #dv [value]="products" [rows]="15" [paginator]="true"  layout="grid">
-  <!-- List View -->
+  <div class="categories-page__menu">
+    <!-- <p-listbox 
+        [options]="categories" 
+        [(ngModel)]="category"  
+        [style]="{'width':'15rem'}" 
+        [listStyle]="{'max-height': '220px'}" 
+        (onChange)="onCategoryChange($event.value)"
+    /> -->
+    <!-- <p-menubar [model]="itemsBar" /> -->
+    <p-dropdown 
+    [options]="categories" 
+    [(ngModel)]="category" 
+    placeholder="Select a City" 
+    (onChange)="onCategoryChange($event.value)"
+     />
+     
+  </div>
+  <div class="categories-page__products">
+    <p-dataView #dv [value]="products" [rows]="15" [paginator]="true"  layout="grid">
+      <ng-template pTemplate="grid" let-products>
+          <div class="product-grid">
+              <div class="product-grid__item" *ngFor="let item of products">
+                  <div class="product-grid__image">
+                      <img [src]="item.image" [alt]="item.title" />
+                  </div>
+                  <div class="product-grid__details">
+                      <div class="product-grid__category">
+                          <i class="pi pi-tag product-grid__icon"></i>
+                          <span>{{ item.category }}</span>
+                      </div>
+                      <p-tag severity="success" value="Stock" class="product-grid__tag"></p-tag>
+                  </div>
+                  <div class="product-grid__score">
+                      <div class="product-grid__title">{{ item.title }}</div>
+                      <div class="product-grid__rating">
+                          <p-rating [(ngModel)]="item.rating.rate" [readonly]="true" [cancel]="false"></p-rating>
+                      </div>
+                  </div>
+                  <div class="product-grid__actions">
+                      <div class="product-grid__price">{{ '€' + item.price }}</div>
+                      <div class="product-grid__buttons">
+                          <p-button [routerLink]="['/product', item.id]" icon="pi pi-shopping-cart" label="" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+    </p-dataView>
+
+  </div>
+
+
+</div>
+
+
+<!-- List View -->
 <!-- <ng-template pTemplate="header">
     <div class="product-nav">
             <div class="product-nav__buttons">
@@ -49,34 +104,3 @@
     </div>
     
   </ng-template> -->
-
-  <!-- Grid View -->
-  <ng-template pTemplate="grid" let-products>
-      <div class="product-grid">
-          <div class="product-grid__item" *ngFor="let item of products">
-              <div class="product-grid__image">
-                  <img [src]="item.image" [alt]="item.title" />
-              </div>
-              <div class="product-grid__details">
-                  <div class="product-grid__category">
-                      <i class="pi pi-tag product-grid__icon"></i>
-                      <span>{{ item.category }}</span>
-                  </div>
-                  <p-tag severity="success" value="Stock" class="product-grid__tag"></p-tag>
-              </div>
-              <div class="product-grid__score">
-                  <div class="product-grid__title">{{ item.title }}</div>
-                  <div class="product-grid__rating">
-                      <p-rating [(ngModel)]="item.rating.rate" [readonly]="true" [cancel]="false"></p-rating>
-                  </div>
-              </div>
-              <div class="product-grid__actions">
-                  <div class="product-grid__price">{{ '€' + item.price }}</div>
-                  <div class="product-grid__buttons">
-                      <p-button [routerLink]="['/product', item.id]" icon="pi pi-shopping-cart" label="" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"></p-button>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </ng-template>
-</p-dataView>

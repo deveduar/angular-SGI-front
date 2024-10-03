@@ -8,16 +8,21 @@ import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
 import { RouterModule } from '@angular/router';
 
+import { ThemeService } from '../../adapters/theme-service';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, RouterModule],
+  imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, RouterModule, ButtonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   items: MenuItem[] | undefined;
+  currentTheme: string = 'lara-dark-blue';
+  constructor(private themeService: ThemeService) {}
+
 
   ngOnInit() {
     this.items = [
@@ -100,6 +105,10 @@ export class HeaderComponent {
       // }
     ];
   }
-  
+
+  toggleTheme() {
+    this.currentTheme = this.currentTheme === 'lara-light-blue' ? 'lara-dark-blue' : 'lara-light-blue';
+    this.themeService.switchTheme(this.currentTheme);
+  }
   
 }

@@ -48,7 +48,15 @@
           <ng-template pTemplate="end">
             <div class="navbar-search-avatar">
               <input type="text" pInputText placeholder="Search" class="navbar-input" />
-              <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" class="navbar-avatar"></p-avatar>
+              <!-- <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" class="navbar-avatar"></p-avatar> -->
+              <!-- <i class="pi pi-user" style="font-size: 1.5rem"></i> -->
+              <p-button icon="pi pi-user" [rounded]="true" severity="info" [outlined]="true" />
+              <p-button
+              [icon]="currentTheme === 'lara-light-blue' ? 'pi pi-sun' : 'pi pi-moon'"
+              (click)="toggleTheme()"
+              severity="info"
+              [rounded]="true"  [outlined]="true" >
+            </p-button>
             </div>
           </ng-template>
           

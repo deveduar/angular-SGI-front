@@ -70,15 +70,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -95,8 +86,8 @@
     border-radius: 8px;
     overflow: hidden;
     transition: box-shadow 0.3s ease;
-    min-height: 400px;
-    max-height: 330px;
+    min-height: 370px;
+    // max-height: 330px;
     width: 100%;
 
     &:hover {
@@ -123,6 +114,7 @@
     padding-right: 0.5rem;
     justify-content: space-between;
     align-items: center;
+    margin-top: 1rem;
   }
 
   &__category {
@@ -211,8 +203,9 @@
     justify-content: space-between;
     padding: 1rem;
     flex: content;
-    padding-top: 1rem;
-    margin-top: 2rem;
+    // padding-top: 1rem;
+    // margin-top: 2rem;
+
   }
 
   &__buttons {
@@ -233,15 +226,6 @@
     }
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 
