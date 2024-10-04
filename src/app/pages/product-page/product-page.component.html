@@ -1,14 +1,26 @@
 
 
 <div class="product-page">
-    <p-breadcrumb 
-    class="product-page__breadcrumb" 
-    [model]="items" 
-    [home]="home" />
+
     <div class="product-page-details">
+        <p-breadcrumb 
+        class="product-page__breadcrumb" 
+        [model]="items" 
+        [home]="home" />
 
         <h2 class="product-page-details__title">{{ product?.title }}</h2>
-        <img class="product-page-details__image" src="{{product?.image}}" alt="{{product?.title}}">
+        <!-- <img class="product-page-details__image" src="{{product?.image}}" alt="{{product?.title}}"> -->
+        <div class="product-page-details__image">
+            <p-image 
+            
+            src="{{product?.image}}" 
+            alt="{{product?.title}}" 
+            width="100%" 
+            [preview]="true" />
+            
+        </div>
+
+
         <p class="product-details-page__price"><strong>Price:</strong> {{ product?.price | currency:'EUR':'symbol':'1.2-2' }}</p>
         <p class="product-page-details__category">
             <strong>Category:</strong> 
@@ -25,7 +37,7 @@
 
 
 </div>
-<div class="product-page-related">
-    <!-- <h2 class="product-page-related__title">Related Products</h2> -->
-    <app-product-carousel [resetPagination]="true" [excludedProduct]="product" [category]="product?.category" [context]="'page'"></app-product-carousel>
-</div>
+    <div class="product-page-related">
+        <!-- <h2 class="product-page-related__title">Related Products</h2> -->
+        <app-product-carousel [resetPagination]="true" [excludedProduct]="product" [category]="product?.category" [context]="'page'"></app-product-carousel>
+    </div>

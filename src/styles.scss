@@ -27,13 +27,24 @@
   
     --spacing-unit: 8px;
     --border-radius-base: 50px;
-    --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.1);
+    // --box-shadow-base: 0 2px 4px rgba(255, 158, 158, 0.1);
+
+
+    --box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    // --surface-border: rgba(255, 255, 255, 0.1);
 
     @each $name, $color in $colors {
       --#{$name}-color: #{$color};
     }
   }
   
+  body.light-theme {
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    // --surface-border: rgba(0, 0, 0, 0.1);
+}
+
+
+
   // Reset básico y configuración global
   html, body {
     margin: 0;

@@ -7,11 +7,12 @@ import { ProductCarouselComponent } from '../product-carousel/product-carousel.c
 import { CommonModule } from '@angular/common';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { MenuItem } from 'primeng/api';
+import { ImageModule } from 'primeng/image';
 
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [ProductDetailComponent, ProductCarouselComponent, CommonModule, BreadcrumbModule],
+  imports: [ProductDetailComponent, ProductCarouselComponent, CommonModule, BreadcrumbModule, ImageModule],
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.scss']
 })

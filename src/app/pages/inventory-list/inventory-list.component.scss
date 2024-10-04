@@ -93,7 +93,8 @@
     width: 100%;
 
     &:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--box-shadow);
+      
     }
   }
 
@@ -247,6 +248,10 @@
     border: 1px solid var(--surface-border);
     background-color: var(--surface-card);
     border-radius: 8px;
+
+    &:hover {
+      box-shadow: var(--box-shadow);
+    }
   }
 
   &__image-container {
@@ -337,6 +342,8 @@
     gap: 1rem;
     white-space: nowrap;
   }
+
+
 
   // Media Queries
   @media (max-width: 768px) {
