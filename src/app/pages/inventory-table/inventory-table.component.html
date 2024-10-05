@@ -183,23 +183,26 @@
                         </ng-template>
                 </p-dropdown>
             </div> -->
-            <div class="field">
-                <label class="label-dialog">Category</label>
-                <div class="formgrid grid">
-                  <div 
-                    *ngFor="let category of categories" 
-                    class="field-radiobutton col-6"
-                  >
-                    <p-radioButton 
-                      [id]="category" 
-                      name="category" 
-                      [value]="category" 
-                      [(ngModel)]="product.category" 
-                    />
-                    <label class="label-category" [for]="category">{{ category }}</label>
+            <fieldset>
+                <div class="field">
+                    <legend class="label-dialog">Category</legend>
+                    <div class="formgrid grid">
+                      <div 
+                        *ngFor="let category of categories; let i = index" 
+                        class="field-radiobutton col-6"
+                      >
+                        <p-radioButton 
+                          [inputId]="category + i" 
+                          name="category" 
+                          [value]="category" 
+                          [(ngModel)]="product.category" 
+                        />
+                        <label class="label-category" [for]="category + i">{{ category  }}</label>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+            </fieldset>
+
 
             <div class="formgrid ">
                 <div class="field col">

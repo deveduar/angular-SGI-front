@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-import { Component, EventEmitter, Output, OnInit  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { OrderListModule } from 'primeng/orderlist';
 import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';
@@ -65,7 +65,7 @@ export class ProductPickerComponent implements OnInit {
     );
   };
 
-  onProductSelect(event: any) {
+  onProductSelect(event: { value: Product | null }) {
     if (event.value) {
       this.selectedProduct = event.value;
     } else {

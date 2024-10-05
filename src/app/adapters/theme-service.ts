@@ -6,7 +6,7 @@ import { PLATFORM_ID } from '@angular/core';
   providedIn: 'root',
 })
 export class ThemeService {
-  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
 
   switchTheme(theme: string) {
     if (isPlatformBrowser(this.platformId)) {

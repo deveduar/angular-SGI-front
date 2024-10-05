@@ -17,7 +17,18 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 
+interface CategoryOption {
+  label: string;
+  value: string;
+}
+
 type sortField = "price" | "id";
+
+// interface SortOption {
+//   label: string;
+//   value: sortField | '!price' | '!id';
+// }
+
 
 @Component({
   selector: 'app-inventory-list',
@@ -44,7 +55,7 @@ export class InventoryListComponent implements OnInit {
     searchTerm = '';
     filteredProducts: Product[] = [];
 
-    categoryOptions: any[] = [];
+    categoryOptions: CategoryOption[] = [];
     selectedCategory = '';
     categories: string[] = [];
 
@@ -86,16 +97,28 @@ export class InventoryListComponent implements OnInit {
 
     };
 
-    onSortChange(event: any) {
+    // private isSortField(value: string): value is sortField {
+    //   return value === 'price' || value === 'id';
+    // }
+
+    onSortChange(event: { value: sortField | '!price' | '!id'  }) {
       const value = event.value;
 
+      // if (value.indexOf('!') === 0) {
+      //     this.sortOrder = -1;
+      //     this.sortField = value.substring(1, value.length);
+      // } else {
+      //     this.sortOrder = 1;
+      //     this.sortField = value;
+      // }
       if (value.indexOf('!') === 0) {
-          this.sortOrder = -1;
-          this.sortField = value.substring(1, value.length);
-      } else {
-          this.sortOrder = 1;
-          this.sortField = value;
-      }
+        this.sortOrder = -1;
+        const field = value.substring(1) as sortField;
+        this.sortField = field;
+    } else {
+        this.sortOrder = 1;
+        this.sortField = value as sortField; 
+    }
       this.applySort();
     }
 
@@ -107,14 +130,14 @@ export class InventoryListComponent implements OnInit {
       this.applySort();
     }
 
-    onCategoryChange(event: any) {
+    onCategoryChange(event: {value:string}) {
       this.selectedCategory = event.value;
       this.searchTerm = '';
 
       if (!this.selectedCategory || this.selectedCategory === '') {
         this.filteredProducts = [...this.products];
       } else {
-        // Filtra los productos por la categoría seleccionada
+        
         this.filteredProducts = this.products.filter(product =>
           product.category === this.selectedCategory
         );

@@ -7,6 +7,12 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { RouterModule } from '@angular/router';
 
+interface ResponsiveOption {
+  breakpoint: string;
+  numVisible: number;
+  numScroll: number;
+}
+
 
 @Component({
   selector: 'app-product-carousel',
@@ -28,7 +34,7 @@ export class ProductCarouselComponent implements OnInit, OnChanges {
   page = 0;
   @Input() showTopProducts = false;
 
-  responsiveOptions: any[] | undefined;
+  responsiveOptions: ResponsiveOption[] | undefined;
   errorMessage: string | null = null;
   
   filteredProducts: Product[] = [];

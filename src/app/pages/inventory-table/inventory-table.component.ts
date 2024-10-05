@@ -11,7 +11,7 @@ import { ConfirmationService, MessageService } from 'primeng/api'
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
-import { Rating, RatingModule } from 'primeng/rating';
+import { RatingModule } from 'primeng/rating';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -27,6 +27,18 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 // import { FileUploadModule } from 'primeng/fileupload';
 import * as Papa from 'papaparse';
+
+interface FormattedProduct {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  Rate: number;
+  RatingCount: number;
+}
+
 
 @Component({
   selector: 'app-inventory-table',
@@ -185,14 +197,19 @@ export class InventoryTableComponent implements OnInit {
 
   exportToCSV(): void {
     
-    const formattedProducts = this.products.map(product => {
-      const clonedProduct: any = { 
-        ...product, 
-        Rate: product.rating?.rate, 
-        RatingCount: product.rating?.count 
+    const formattedProducts: FormattedProduct[] = this.products.map(product => {
+      const clonedProduct: FormattedProduct = { 
+        id: product.id,
+            title: product.title,
+            price: product.price,
+            description: product.description,
+            category: product.category,
+            image: product.image,
+            Rate: product.rating?.rate || 0,
+            RatingCount: product.rating?.count || 0  
       };
   
-      delete clonedProduct.rating;
+      // delete clonedProduct.rating;
       return clonedProduct;
     });
 
