@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { Product } from '../../domain/models/product';
 import { InventoryService } from '../../adapters/api/inventory.service';
 
@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './product-carousel.component.html',
   styleUrl: './product-carousel.component.scss'
 })
-export class ProductCarouselComponent {
+export class ProductCarouselComponent implements OnInit, OnChanges {
   products: Product[] = [];
   // products!: Product[];
 
@@ -24,9 +24,9 @@ export class ProductCarouselComponent {
   @Input() category: string | undefined;
   @Input() excludedProduct?: Product;
 
-  @Input() resetPagination: boolean = false;
-  page: number = 0;
-  @Input() showTopProducts: boolean = false;
+  @Input() resetPagination = false;
+  page = 0;
+  @Input() showTopProducts = false;
 
   responsiveOptions: any[] | undefined;
   errorMessage: string | null = null;

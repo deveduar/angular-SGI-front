@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 import { BadgeModule } from 'primeng/badge';
@@ -18,9 +18,9 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   items: MenuItem[] | undefined;
-  currentTheme: string = 'lara-dark-blue';
+  currentTheme = 'lara-dark-blue';
   constructor(private themeService: ThemeService) {}
 
 

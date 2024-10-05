@@ -27,7 +27,7 @@ type sortField = "price" | "id";
   styleUrl: './inventory-list.component.scss'
 })
 
-export class InventoryListComponent {
+export class InventoryListComponent implements OnInit {
 
 
     products!: Product[];
@@ -39,13 +39,13 @@ export class InventoryListComponent {
     sortField: sortField = 'price';
     // sortKey: SortKey = 'price';
 
-    layout: string = 'list' ;
+    layout = 'list' ;
 
-    searchTerm: string = '';
+    searchTerm = '';
     filteredProducts: Product[] = [];
 
     categoryOptions: any[] = [];
-    selectedCategory: string = '';
+    selectedCategory = '';
     categories: string[] = [];
 
     constructor(private inventoryService: InventoryService){}
@@ -87,7 +87,7 @@ export class InventoryListComponent {
     };
 
     onSortChange(event: any) {
-      let value = event.value;
+      const value = event.value;
 
       if (value.indexOf('!') === 0) {
           this.sortOrder = -1;

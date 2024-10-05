@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductPickerComponent } from '../pages/product-picker/product-picker.component';
 import { InventoryService } from '../adapters/api/inventory.service';
 import { Product } from '../domain/models/product';
@@ -19,7 +19,7 @@ import { ProductCarouselComponent } from '../pages/product-carousel/product-caro
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   products!: Product[];
   errorMessage: string | null = null;
 

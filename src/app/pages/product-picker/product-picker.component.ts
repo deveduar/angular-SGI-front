@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-import { Component, EventEmitter, Output  } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit  } from '@angular/core';
 import { OrderListModule } from 'primeng/orderlist';
 import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';
@@ -27,7 +27,7 @@ import { ProductCarouselComponent } from '../product-carousel/product-carousel.c
   templateUrl: './product-picker.component.html',
   styleUrl: './product-picker.component.scss'
 })
-export class ProductPickerComponent {
+export class ProductPickerComponent implements OnInit {
   products!: Product[];
   errorMessage: string | null = null;
   // selectedProduct!: Product;

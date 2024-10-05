@@ -25,7 +25,7 @@ import { DropdownModule } from 'primeng/dropdown';
   templateUrl: './category-page.component.html',
   styleUrls: ['./category-page.component.scss']
 })
-export class CategoryPageComponent {
+export class CategoryPageComponent implements OnInit {
   category: string | undefined;
   products: Product[] = [];
   items: MenuItem[] | undefined;

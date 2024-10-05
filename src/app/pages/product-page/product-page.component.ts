@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';
@@ -16,7 +16,7 @@ import { ImageModule } from 'primeng/image';
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.scss']
 })
-export class ProductPageComponent {
+export class ProductPageComponent implements OnInit {
   product: Product | undefined;
 
   items: MenuItem[] | undefined;

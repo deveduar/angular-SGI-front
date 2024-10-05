@@ -3,7 +3,7 @@ import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ViewChild } from '@angular/core';
+import { ViewChild, OnInit } from '@angular/core';
 
 import { Table } from 'primeng/table';
 import { ConfirmationService, MessageService } from 'primeng/api'
@@ -36,19 +36,19 @@ import * as Papa from 'papaparse';
   styleUrl: './inventory-table.component.scss'
 })
 
-export class InventoryTableComponent {
+export class InventoryTableComponent implements OnInit {
 
   products!: Product[];
   errorMessage: string | null = null;
   // rateKey: string = '';
-  loading: boolean = true;
+  loading = true;
 
   @ViewChild('dt2') dt2!: Table;
 
   selectedProducts!:Product[] | null;
   product!: Product;
-  submitted: boolean = false;
-  productDialog: boolean = false;
+  submitted = false;
+  productDialog = false;
 
   categories: string[] = []; 
 
