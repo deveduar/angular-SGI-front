@@ -1,12 +1,12 @@
 
 
 <div class="product-page">
-
+    <p-breadcrumb 
+    class="product-page__breadcrumb" 
+    [model]="items" 
+    [home]="home" />
     <div class="product-page-details">
-        <p-breadcrumb 
-        class="product-page__breadcrumb" 
-        [model]="items" 
-        [home]="home" />
+
 
         <h2 class="product-page-details__title">{{ product?.title }}</h2>
         <!-- <img class="product-page-details__image" src="{{product?.image}}" alt="{{product?.title}}"> -->

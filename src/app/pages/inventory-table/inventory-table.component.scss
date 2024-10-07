@@ -11,9 +11,6 @@
 //     display: block;
 // }
 
-.card {
-// background-color: red;
-}
 
 ::ng-deep .p-toolbar {
     padding: 1rem;
@@ -33,10 +30,20 @@ th {
     background-color: var(--surface-card);
 }
 
+::ng-deep .p-datatable-header {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+::ng-deep .p-datatable-footer {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
 
-.card {
-    padding-bottom: 1rem;
-}
+  textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
 
 .summary-table {
     display: flex;
@@ -128,11 +135,3 @@ th {
     margin-left: 0.4rem;
   }
 
-::ng-deep .p-datatable-header {
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-  }
-::ng-deep .p-datatable-footer {
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
