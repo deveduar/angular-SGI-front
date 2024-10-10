@@ -44,6 +44,12 @@ th {
     resize: vertical;
   }
   
+.title-table {
+    overflow: hidden;
+    max-width: 450px;
+    text-align: left;
+    // padding-bottom: 2rem;
+}
 
 .summary-table {
     display: flex;

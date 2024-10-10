@@ -39,7 +39,7 @@
             <div class="product-grid">
                 <div class="product-grid__item" *ngFor="let item of products">
                     <div class="product-grid__image">
-                        <img [src]="item.image" [alt]="item.title" />
+                        <img [src]="item.images.preview" [alt]="item.title" />
 
                     </div>
                     <div class="product-grid__details">
@@ -85,7 +85,7 @@
             <div class="product-list">
                 <div class="product-list__item" *ngFor="let item of products">
                     <div class="product-list__image-container">
-                        <img class="product-list__image" [src]="item.image" [alt]="item.title" />
+                        <img class="product-list__image" [src]="item.images.preview" [alt]="item.title" />
                     </div>
                     <div class="product-list__details">
                         <div class="product-list__category">

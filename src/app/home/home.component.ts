@@ -30,7 +30,8 @@ export class HomeComponent implements OnInit {
 
       {     
         next: (data) => {
-        this.products = data.slice(0, 20);
+        console.log(data)
+        this.products = data;
         this.errorMessage = null;
       },
         error: (err) => {

@@ -89,8 +89,8 @@
                 <td>
                     <p-tableCheckbox [value]="product" />
                 </td>
-                <td>{{ product.title }}</td>
-                <td class="image-table"><img [src]="product.image" [alt]="product.title" width="60" height="60"/></td>
+                <td class="title-table">{{ product.title }}</td>
+                <td class="image-table"><img [src]="product.images.preview" [alt]="product.title" width="60" height="60"/></td>
                 <td>{{ product.category }}</td>
                 <td>{{ product.price | currency:'EUR' }}</td>
                 <td class="product-rating">
@@ -133,10 +133,10 @@
     styleClass="p-fluid">
         <ng-template pTemplate="content">
             <img 
-                [src]="product.image" 
+                [src]="product.images.preview" 
                 [alt]="product.title" 
                 class="dialog-image" 
-                *ngIf="product.image" />
+                *ngIf="product.images.preview" />
             <div class="field">
                 <label for="title">Name</label>
                 <input 

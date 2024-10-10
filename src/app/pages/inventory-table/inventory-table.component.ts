@@ -91,16 +91,15 @@ export class InventoryTableComponent implements OnInit {
   }
 
   onOpenNew() {
-    // this.product = {};
     this.product = {
-      id: 0, 
+      id: 0,
       title: '',
       price: 0,
       description: '',
       category: '',
-      image: '',
-      rating: { rate: 0, count: 0 }  
-  };
+      images: { front: '', preview: '' },  // Inicializar las imágenes
+      rating: { rate: 0, count: 0 }
+    };
     this.submitted = false;
     this.productDialog = true;
   }
@@ -129,48 +128,59 @@ export class InventoryTableComponent implements OnInit {
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-          this.products = this.products.filter((val) => val.id !== product.id);
-          this.product = {
-            id: 0, 
-            title: '',
-            price: 0,
-            description: '',
-            category: '',
-            image: '',
-            rating: { rate: 0, count: 0 }  
-        };
-          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-      }
-  });
-  }
-
-  onSaveProduct() {
-    this.submitted = true;
-
-    if (this.product.title?.trim() && this.product.description?.trim() && this.product.price > 0 ) {
-        if (this.product.id) {
-            this.products[this.findIndexById(this.product.id)] = this.product;
-            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
-        } else {
-            this.product.id = this.createId();
-            this.product.image = 'https://placehold.co/600x400/png';
-            this.products.push(this.product);
-            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
-        }
-
-        this.products = [...this.products];
-        this.productDialog = false;
+        // Filtrar para eliminar el producto de la lista
+        this.products = this.products.filter((val) => val.id !== product.id);
+  
+        // Reiniciar el producto seleccionado con el nuevo formato de imágenes
         this.product = {
           id: 0, 
           title: '',
           price: 0,
           description: '',
           category: '',
-          image: '',
-          rating: { rate: 0, count: 0 }  
-      };
+          images: { front: '', preview: '' },  // Cambiado de image a images
+          rating: { rate: 0, count: 0 }
+        };
+  
+        // Mostrar un mensaje de éxito al eliminar
+        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+      }
+    });
+  }
+  
+
+  onSaveProduct() {
+    this.submitted = true;
+  
+    if (this.product.title?.trim() && this.product.description?.trim() && this.product.price > 0) {
+      if (this.product.id) {
+        this.products[this.findIndexById(this.product.id)] = this.product;
+        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
+      } else {
+        this.product.id = this.createId();
+        this.product.images = { front: 'https://placehold.co/600x400/png', preview: 'https://placehold.co/600x400/png' };  // Usar imágenes por defecto
+        this.products.push(this.product);
+        this.messageService.add({ severity: 'success', summary: 'Product Created', detail: 'Product Added', life: 3000 });
+      }
+  
+      this.products = [...this.products];
+      this.productDialog = false;
+      this.resetProduct();
     }
   }
+  
+  resetProduct() {
+    this.product = {
+      id: 0,
+      title: '',
+      price: 0,
+      description: '',
+      category: '',
+      images: { front: '', preview: '' },
+      rating: { rate: 0, count: 0 }
+    };
+  }
+  
 
   onHideDialog() {
     this.productDialog = false;
@@ -196,23 +206,21 @@ export class InventoryTableComponent implements OnInit {
   }
 
   exportToCSV(): void {
-    
     const formattedProducts: FormattedProduct[] = this.products.map(product => {
-      const clonedProduct: FormattedProduct = { 
+      const clonedProduct: FormattedProduct = {
         id: product.id,
-            title: product.title,
-            price: product.price,
-            description: product.description,
-            category: product.category,
-            image: product.image,
-            Rate: product.rating?.rate || 0,
-            RatingCount: product.rating?.count || 0  
+        title: product.title,
+        price: product.price,
+        description: product.description,
+        category: product.category,
+        image: product.images.front,  // O cambiar a product.images.preview si prefieres esa imagen
+        Rate: product.rating?.rate || 0,
+        RatingCount: product.rating?.count || 0
       };
   
-      // delete clonedProduct.rating;
       return clonedProduct;
     });
-
+  
     const csv = Papa.unparse(formattedProducts);
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
@@ -221,6 +229,7 @@ export class InventoryTableComponent implements OnInit {
     a.setAttribute('download', 'products.csv');
     a.click();
   }
+  
 
 
 

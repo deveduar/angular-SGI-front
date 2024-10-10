@@ -1,6 +1,6 @@
 <div class="product-details">
     <h2 class="product-details__title">{{ product?.title }}</h2>
-    <img class="product-details__image" src="{{product?.image}}" alt="{{product?.title}}">
+    <img class="product-details__image" src="{{product?.images?.preview}}" alt="{{product?.title}}">
     <p class="product-details__price"><strong>Price:</strong> {{ product?.price | currency:'EUR':'symbol':'1.2-2' }}</p>
     <p class="product-details__category">
         <strong>Category:</strong> 

@@ -43,3 +43,6 @@ Thumbs.db
 
 # Personal
 /x-cambios
+
+proxy.conf.json
+.gitignore
