@@ -1,12 +1,27 @@
 
+<p-breadcrumb 
+class="product-page__breadcrumb" 
+[model]="items" 
+[home]="home" />
+
 
 <div class="product-page">
-    <p-breadcrumb 
-    class="product-page__breadcrumb" 
-    [model]="items" 
-    [home]="home" />
+
+  <div class="product-page__header">
+    <p-button 
+    icon="pi pi-arrow-left" 
+    [rounded]="true" 
+    [text]="true" 
+    severity="secondary"
+    class="back-button"
+    [routerLink]="['/inventory']"
+  ></p-button>
+
+  </div>
+
 
     <div class="product-page-details">
+
         <div class="product-page-details__image">
           <p-image
             src="{{ product?.images?.preview }}"
@@ -14,11 +29,12 @@
             width="100%"
             [preview]="true" />
         </div>
+
         <p class="product-page-details__category">
             <i class="pi pi-tag product-page-details__category-icon"></i>
             {{ product?.category }}
         </p>
-        <h2 class="product-page-details__title">{{ product?.title }}</h2>
+        <h1 class="product-page-details__title">{{ product?.title }}</h1>
       
 
 
@@ -28,19 +44,26 @@
         <p class="product-page-details__sku">
             <strong>SKU:</strong> {{ selectedVariant.sku }}
         </p>
+        <p class="product-page-details__size">
+            <strong>Size:</strong> {{ selectedVariant.size }}
+        </p>
         
         <p class="product-page-details__color">
             <strong>Color:</strong> {{ selectedColor  }} <!-- Muestra el color seleccionado -->
         </p>
         
-        <p class="product-page-details__price">
+        <div class="product-page-details__stock">
+          <p class="product-page-details__price">
             {{ selectedVariant.price | currency:product?.currency:'symbol':'1.2-2' }}
             </p>
-        <p class="product-page-details__availability">
-            <p-tag [severity]="availabilitySeverity" [value]="availabilityStatus"></p-tag>
-        </p>
+          <p class="product-page-details__availability">
+              <p-tag [severity]="availabilitySeverity" [value]="availabilityStatus"></p-tag>
+          </p> 
+        </div>
+
+
         
-        <!-- Selección de colores -->
+        
         <div class="product-page-details__colors" *ngIf="availableColors.length > 0">
             <label *ngFor="let color of availableColors" class="color-selector__option" [ngStyle]="{ 'background-color': getColorHex(color) }">
                 <input 
@@ -53,7 +76,7 @@
               </label>
         </div>
       
-        <!-- Selección de tallas -->
+        
         <div class="product-page-details__sizes" *ngIf="availableSizes.length > 0">
           <p-button *ngFor="let size of availableSizes"
             [label]="size"
@@ -64,16 +87,14 @@
           </p-button>
         </div>
 
-        <div class="product-page-related">
-            <!-- <h2 class="product-page-related__title">Related Products</h2> -->
-            <app-product-carousel [resetPagination]="true" [excludedProduct]="product" [category]="product?.category" [context]="'page'"></app-product-carousel>
-        </div>
+
         
       </div>
       
-
+      <div class="product-page-related">
+        <!-- <h2 class="product-page-related__title">Related Products</h2> -->
+        <app-product-carousel [resetPagination]="true" [excludedProduct]="product" [category]="product?.category" [context]="'page'"></app-product-carousel>
+    </div>
       
       
-      
-
 </div>

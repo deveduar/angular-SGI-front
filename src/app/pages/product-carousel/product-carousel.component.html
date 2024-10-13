@@ -8,7 +8,7 @@
     (onPage)="handlePageChange($event.page)"
     >
     <ng-template pTemplate="header">
-        <h3 class="product-carousel__title-card">{{ showTopProducts ? 'Top Products' : 'Related Products' }}</h3>
+        <h3 class="product-carousel__title-card">{{ showTopProducts ? 'Top Products' : '' }}</h3>
     </ng-template>
         <ng-template let-product pTemplate="item">
             <div class="product-carousel__item"  [routerLink]="['/product', product.id]">

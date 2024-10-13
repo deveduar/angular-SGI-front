@@ -39,11 +39,11 @@ export class InventoryService {
   getProductById(id: number): Observable<Product> {
     if (this.productsCache) {
       const product = this.productsCache.find(p => p.id === id);
-      // if (product) {
-      //   return of(product as Product);  
+      if (product) {
+        return of(product as Product);  
 
-      // }
-      return of(product as Product);
+      }
+      // return of(product as Product);
     }
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Product>(url);
