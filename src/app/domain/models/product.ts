@@ -1,19 +1,49 @@
+// export interface Product {
+//     id: number;
+//     title: string;
+//     price: number;
+//     description: string;
+//     category: string;
+//     images: {
+//       front: string;
+//       preview: string;
+//       thumbnail: string;
+//     }
+//     rating: {
+//       rate: number;
+//       count: number;
+//     };
+// }
+
 export interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  images: {
+    front: string;
+    preview: string;
+    thumbnail: string;
+  };
+  rating: {
+    rate: number;
+    count: number;
+  };
+  sku: string;                // Nuevo campo SKU
+  currency: string;            // Nuevo campo Currency
+  color: string;               // Nuevo campo Color
+  availability_status: string; // Nuevo campo Availability Status
+  external_id: string;         // Nuevo campo External ID
+  variants: {
     id: number;
-    title: string;
+    name: string;
+    size: string; 
+    color: string;
     price: number;
-    description: string;
-    category: string;
-    // image: string;
-    images: {
-      front: string;
-      preview: string;
-    }
-    rating: {
-      rate: number;
-      count: number;
-    };
-  
+    sku: string;
+    external_id: string;
+  }[]; // Variants con tamaños
 }
 
 // export interface Product {

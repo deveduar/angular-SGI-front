@@ -97,8 +97,14 @@ export class InventoryTableComponent implements OnInit {
       price: 0,
       description: '',
       category: '',
-      images: { front: '', preview: '' },  // Inicializar las imágenes
-      rating: { rate: 0, count: 0 }
+      images: { front: '', preview: '', thumbnail: '' },
+      rating: { rate: 0, count: 0 },
+      sku: '',  // Inicializa SKU
+      currency: '',  // Inicializa Currency
+      color: '',  // Inicializa Color
+      availability_status: '',  // Inicializa Availability Status
+      external_id: '',  // Inicializa External ID
+      variants: []  // Inicializa variants como un array vacío
     };
     this.submitted = false;
     this.productDialog = true;
@@ -131,19 +137,25 @@ export class InventoryTableComponent implements OnInit {
         // Filtrar para eliminar el producto de la lista
         this.products = this.products.filter((val) => val.id !== product.id);
   
-        // Reiniciar el producto seleccionado con el nuevo formato de imágenes
+        // Reiniciar el producto seleccionado con todas las propiedades necesarias
         this.product = {
           id: 0, 
           title: '',
           price: 0,
           description: '',
           category: '',
-          images: { front: '', preview: '' },  // Cambiado de image a images
-          rating: { rate: 0, count: 0 }
+          images: { front: '', preview: '', thumbnail: '' },
+          rating: { rate: 0, count: 0 },
+          sku: '',  // Inicializa SKU
+          currency: '',  // Inicializa Currency
+          color: '',  // Inicializa Color
+          availability_status: '',  // Inicializa Availability Status
+          external_id: '',  // Inicializa External ID
+          variants: []  // Inicializa variants como array vacío
         };
   
         // Mostrar un mensaje de éxito al eliminar
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+        this.messageService.add({ severity: 'success', summary: 'Product Deleted', detail: 'Product Deleted', life: 3000 });
       }
     });
   }
@@ -158,7 +170,14 @@ export class InventoryTableComponent implements OnInit {
         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
       } else {
         this.product.id = this.createId();
-        this.product.images = { front: 'https://placehold.co/600x400/png', preview: 'https://placehold.co/600x400/png' };  // Usar imágenes por defecto
+        this.product.images = { front: 'https://placehold.co/600x400/png', preview: 'https://placehold.co/600x400/png', thumbnail: 'https://placehold.co/150x150/png' };
+        this.product.sku = 'SKU_DEFAULT';  // Valor por defecto para SKU
+        this.product.currency = 'USD';  // Valor por defecto para Currency
+        this.product.color = 'default';  // Valor por defecto para Color
+        this.product.availability_status = 'available';  // Valor por defecto para Availability Status
+        this.product.external_id = '';  // Valor por defecto para External ID
+        this.product.variants = [];  // Inicializa variants como array vacío
+  
         this.products.push(this.product);
         this.messageService.add({ severity: 'success', summary: 'Product Created', detail: 'Product Added', life: 3000 });
       }
@@ -176,8 +195,14 @@ export class InventoryTableComponent implements OnInit {
       price: 0,
       description: '',
       category: '',
-      images: { front: '', preview: '' },
-      rating: { rate: 0, count: 0 }
+      images: { front: '', preview: '', thumbnail: '' },
+      rating: { rate: 0, count: 0 },
+      sku: '',  // Inicializa SKU
+      currency: '',  // Inicializa Currency
+      color: '',  // Inicializa Color
+      availability_status: '',  // Inicializa Availability Status
+      external_id: '',  // Inicializa External ID
+      variants: []  // Inicializa variants como array vacío
     };
   }
   
@@ -213,7 +238,7 @@ export class InventoryTableComponent implements OnInit {
         price: product.price,
         description: product.description,
         category: product.category,
-        image: product.images.front,  // O cambiar a product.images.preview si prefieres esa imagen
+        image: product.images.preview,  
         Rate: product.rating?.rate || 0,
         RatingCount: product.rating?.count || 0
       };

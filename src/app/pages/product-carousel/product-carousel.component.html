@@ -11,7 +11,7 @@
         <h3 class="product-carousel__title-card">{{ showTopProducts ? 'Top Products' : 'Related Products' }}</h3>
     </ng-template>
         <ng-template let-product pTemplate="item">
-            <div class="product-carousel__item">
+            <div class="product-carousel__item"  [routerLink]="['/product', product.id]">
                 <div class="product-carousel__image-container">
                     <img 
                         src="{{ product.images.preview }}" 
@@ -29,10 +29,10 @@
                     <div class="product-carousel__price">
                         {{ product.price | currency }}
                     </div>
-                    <div class="product-carousel__actions">
+                    <!-- <div class="product-carousel__actions">
                         <p-button  icon="pi pi-heart" severity="secondary" [outlined]="true" />
                         <p-button [routerLink]="['/product', product.id]" icon="pi pi-shopping-cart" class="product-carousel__buy-button" />
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </ng-template>
