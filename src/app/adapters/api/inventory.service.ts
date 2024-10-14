@@ -8,19 +8,6 @@ import { Product } from '../../domain/models/product';
 })
 
 export class InventoryService {
-  // private apiUrl = 'https://fakestoreapi.com/products?limit=20';
-  // private productDetailUrl = 'https://fakestoreapi.com/products'; 
-
-  // constructor(private http: HttpClient) { }
-
-  // getProducts(): Observable<Product[]> {
-  //   return this.http.get<Product[]>(this.apiUrl)
-  // }
-
-  // getProductById(id: number): Observable<Product> {
-  //   const url = `${this.productDetailUrl}/${id}`;
-  //   return this.http.get<Product>(url);
-  // }
 
   private apiUrl = 'http://localhost:3000/api/products';
   private productsCache: Product[] | null = null;
@@ -49,32 +36,4 @@ export class InventoryService {
     return this.http.get<Product>(url);
   }
 
-
-
-
-
-
-
-
-
-
-
-  // private apiUrl = environment.printfulApiUrl;
-
-  // constructor(private http: HttpClient) { }
-
-  // getProducts(): Observable<Product[]> {
-  //   const headers = new HttpHeaders({
-  //     'Authorization': `Bearer ${environment.printfulApiToken}`
-  //   });
-  //   return this.http.get<Product[]>(this.apiUrl, { headers });
-  // }
-
-  // getProductById(id: number): Observable<Product> {
-  //   const headers = new HttpHeaders({
-  //     'Authorization': `Bearer ${environment.printfulApiToken}`
-  //   });
-  //   const url = `${this.apiUrl}/${id}`;
-  //   return this.http.get<Product>(url, { headers });
-  // }
 }

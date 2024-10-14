@@ -37,6 +37,7 @@ interface FormattedProduct {
   image: string;
   Rate: number;
   RatingCount: number;
+  variantCount: number;
 }
 
 
@@ -99,12 +100,12 @@ export class InventoryTableComponent implements OnInit {
       category: '',
       images: { front: '', preview: '', thumbnail: '' },
       rating: { rate: 0, count: 0 },
-      sku: '',  // Inicializa SKU
-      currency: '',  // Inicializa Currency
-      color: '',  // Inicializa Color
-      availability_status: '',  // Inicializa Availability Status
-      external_id: '',  // Inicializa External ID
-      variants: []  // Inicializa variants como un array vacío
+      sku: '', 
+      currency: '', 
+      color: '', 
+      availability_status: '',  
+      external_id: '',  
+      variants: [] 
     };
     this.submitted = false;
     this.productDialog = true;
@@ -146,12 +147,12 @@ export class InventoryTableComponent implements OnInit {
           category: '',
           images: { front: '', preview: '', thumbnail: '' },
           rating: { rate: 0, count: 0 },
-          sku: '',  // Inicializa SKU
-          currency: '',  // Inicializa Currency
-          color: '',  // Inicializa Color
-          availability_status: '',  // Inicializa Availability Status
-          external_id: '',  // Inicializa External ID
-          variants: []  // Inicializa variants como array vacío
+          sku: '', 
+          currency: '', 
+          color: '', 
+          availability_status: '', 
+          external_id: '', 
+          variants: [] 
         };
   
         // Mostrar un mensaje de éxito al eliminar
@@ -171,12 +172,12 @@ export class InventoryTableComponent implements OnInit {
       } else {
         this.product.id = this.createId();
         this.product.images = { front: 'https://placehold.co/600x400/png', preview: 'https://placehold.co/600x400/png', thumbnail: 'https://placehold.co/150x150/png' };
-        this.product.sku = 'SKU_DEFAULT';  // Valor por defecto para SKU
-        this.product.currency = 'USD';  // Valor por defecto para Currency
-        this.product.color = 'default';  // Valor por defecto para Color
-        this.product.availability_status = 'available';  // Valor por defecto para Availability Status
-        this.product.external_id = '';  // Valor por defecto para External ID
-        this.product.variants = [];  // Inicializa variants como array vacío
+        this.product.sku = 'SKU_DEFAULT'; 
+        this.product.currency = 'USD'; 
+        this.product.color = 'default'; 
+        this.product.availability_status = 'available';  
+        this.product.external_id = '';  
+        this.product.variants = []; 
   
         this.products.push(this.product);
         this.messageService.add({ severity: 'success', summary: 'Product Created', detail: 'Product Added', life: 3000 });
@@ -197,12 +198,12 @@ export class InventoryTableComponent implements OnInit {
       category: '',
       images: { front: '', preview: '', thumbnail: '' },
       rating: { rate: 0, count: 0 },
-      sku: '',  // Inicializa SKU
-      currency: '',  // Inicializa Currency
-      color: '',  // Inicializa Color
-      availability_status: '',  // Inicializa Availability Status
-      external_id: '',  // Inicializa External ID
-      variants: []  // Inicializa variants como array vacío
+      sku: '', 
+      currency: '',
+      color: '',  
+      availability_status: '', 
+      external_id: '', 
+      variants: [] 
     };
   }
   
@@ -240,7 +241,8 @@ export class InventoryTableComponent implements OnInit {
         category: product.category,
         image: product.images.preview,  
         Rate: product.rating?.rate || 0,
-        RatingCount: product.rating?.count || 0
+        RatingCount: product.rating?.count || 0,
+        variantCount: product.variants.length
       };
   
       return clonedProduct;

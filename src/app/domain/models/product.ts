@@ -30,11 +30,11 @@ export interface Product {
     rate: number;
     count: number;
   };
-  sku: string;                // Nuevo campo SKU
-  currency: string;            // Nuevo campo Currency
-  color: string;               // Nuevo campo Color
-  availability_status: string; // Nuevo campo Availability Status
-  external_id: string;         // Nuevo campo External ID
+  sku: string;               
+  currency: string;            
+  color: string;              
+  availability_status: string; 
+  external_id: string;         
   variants: {
     id: number;
     name: string;
@@ -43,7 +43,7 @@ export interface Product {
     price: number;
     sku: string;
     external_id: string;
-  }[]; // Variants con tamaños
+  }[]; 
 }
 
 // export interface Product {

@@ -70,16 +70,18 @@
                 <th pSortableColumn="title" style="width:40%">
                     Name <p-sortIcon field="title" />
                 </th>
+                <th pSortableColumn="variants" style="width:15%" >Variants <p-sortIcon field="variants" /></th>
+                
                 <th>Image</th>
-                <th pSortableColumn="category" style="width:18%">
+                <th pSortableColumn="category" style="width:15%">
                     Category <p-sortIcon field="category" />
                 </th>
-                <th pSortableColumn="price" style="width:10%">
+                <th pSortableColumn="price" style="width:15%">
                     Price <p-sortIcon field="price" />
                 </th>
-                <th pSortableColumn="rating.rate" style="width:15%">
+                <!-- <th pSortableColumn="rating.rate" style="width:15%">
                     Reviews <p-sortIcon field="rating" />
-                </th>
+                </th> -->
                 <th style="width:10%" >Status</th>
                 <th></th>
             </tr>
@@ -90,16 +92,21 @@
                     <p-tableCheckbox [value]="product" />
                 </td>
                 <td class="title-table">{{ product.title }}</td>
-                <td class="image-table"><img [src]="product.images.preview" [alt]="product.title" width="60" height="60"/></td>
+                <td>{{ product.variants?.length || 0 }}</td>
+
+                <td class="image-table"><img [src]="product.images.thumbnail" [alt]="product.title" width="60" height="60"/></td>
                 <td>{{ product.category }}</td>
                 <td>{{ product.price | currency:'EUR' }}</td>
-                <td class="product-rating">
-                    <!-- <p-rating [(ngModel)]="product.rating.rate" [readonly]="true" [cancel]="false" /> -->
+                <!-- <td class="product-rating">
+                    <p-rating [(ngModel)]="product.rating.rate" [readonly]="true" [cancel]="false" />
                     <span>{{ product.rating.rate }}</span>
                     <i class="pi pi-star-fill "></i>
-                </td>
+                </td> -->
                 <td>
-                    <p-tag class="disp-tag"  severity="success" value="Stock" />
+                    <p-tag 
+                    [severity]="product.availability_status === 'active' ? 'success' : 'danger'" 
+                    [value]="product.availability_status === 'active' ? 'Stock' : 'Stockout'" 
+                  ></p-tag>
                 </td>
                 <td class="buttons-table">
                     <p-button 
@@ -125,6 +132,9 @@
             </div>
         </ng-template>
     </p-table>
+
+
+    
     <p-dialog 
     [(visible)]="productDialog" 
     [style]="{ width: '600px' }" 
