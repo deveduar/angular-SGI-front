@@ -1,7 +1,7 @@
 <!-- <h2>{{ category | titlecase }} Products</h2> -->
 
 <div class="categories-page">
-  <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb>
+  <!-- <p-breadcrumb class="max-w-full" [model]="items" [home]="home"></p-breadcrumb> -->
 
   <div class="categories-page__menu">
     <!-- <p-listbox 
@@ -12,15 +12,16 @@
         (onChange)="onCategoryChange($event.value)"
     /> -->
     <!-- <p-menubar [model]="itemsBar" /> -->
-    <p-dropdown 
+    <!-- <p-dropdown 
     [options]="categories" 
     [(ngModel)]="category" 
     placeholder="Select a City" 
     (onChange)="onCategoryChange($event.value)"
-     />
+     /> -->
      
   </div>
-  <div class="categories-page__products">
+  <app-inventory-list [selectedCategoryFromUrl]="category || ''"></app-inventory-list>
+  <!-- <div class="categories-page__products">
     <p-dataView #dv [value]="products" [rows]="15" [paginator]="true"  layout="grid">
       <ng-template pTemplate="grid" let-products>
           <div class="product-grid">
@@ -52,7 +53,7 @@
       </ng-template>
     </p-dataView>
 
-  </div>
+  </div> -->
 
 
 </div>

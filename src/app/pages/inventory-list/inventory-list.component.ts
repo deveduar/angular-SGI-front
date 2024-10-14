@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';
 
@@ -40,7 +40,8 @@ type sortField = "price" | "id";
 
 export class InventoryListComponent implements OnInit {
 
-
+    @Input() selectedCategoryFromUrl: string = '';
+    
     products!: Product[];
     errorMessage: string | null = null;
     
@@ -50,7 +51,7 @@ export class InventoryListComponent implements OnInit {
     sortField: sortField = 'price';
     // sortKey: SortKey = 'price';
 
-    layout = 'list' ;
+    layout = 'list';
 
     searchTerm = '';
     filteredProducts: Product[] = [];
@@ -78,6 +79,11 @@ export class InventoryListComponent implements OnInit {
           }));
           
           this.categoryOptions.unshift({ label: 'All Categories', value: '' });
+
+          if (this.selectedCategoryFromUrl) {
+            this.selectedCategory = this.selectedCategoryFromUrl;
+            this.onCategoryChange({ value: this.selectedCategory });
+          }
 
           this.sortField = 'id';
           this.sortOrder = 1;

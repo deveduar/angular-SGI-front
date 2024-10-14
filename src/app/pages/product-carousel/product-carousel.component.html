@@ -6,6 +6,7 @@
     [responsiveOptions]="responsiveOptions"
     [page]="page" 
     (onPage)="handlePageChange($event.page)"
+    
     >
     <ng-template pTemplate="header">
         <h3 class="product-carousel__title-card">{{ showTopProducts ? 'Top Products' : '' }}</h3>

@@ -15,13 +15,14 @@ import { ListboxModule } from 'primeng/listbox';
 // import { MegaMenuModule } from 'primeng/megamenu';
 import { MenubarModule } from 'primeng/menubar';
 import { DropdownModule } from 'primeng/dropdown';
+import { InventoryListComponent } from '../inventory-list/inventory-list.component';
 
 
 
 @Component({
   selector: 'app-category-page',
   standalone: true,
-  imports: [CommonModule, BreadcrumbModule, TagModule, ButtonModule, RatingModule, FormsModule, RouterModule, DataViewModule, ListboxModule, MenubarModule, DropdownModule ],
+  imports: [CommonModule, BreadcrumbModule, TagModule, ButtonModule, RatingModule, FormsModule, RouterModule, DataViewModule, ListboxModule, MenubarModule, DropdownModule, InventoryListComponent ],
   templateUrl: './category-page.component.html',
   styleUrls: ['./category-page.component.scss']
 })
