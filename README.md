@@ -1,13 +1,13 @@
 # Angular inventory system for printfull store
 
-Manage products, categories and variants with printfull API
+Manage products, categories and variants with printfull API.
 
-Technologies
+Technologies:
 - angular 18
 - primeng, SASS
 - Backend with Express [https://github.com/deveduar/inventory-backend] 
 
-Backlog
+Backlog:
 - [x] Basic frontend
 - [x] Products and categories
 - [x] Export in csv
