@@ -1,5 +1,4 @@
 ---
-id: 2
 title: "Inventory System"
 description: "Inventory management for dropshipping store created with Angular."
 imageSrc: "https://i.postimg.cc/xd9MxWZ5/tablet-sgi-mockup.webp"
