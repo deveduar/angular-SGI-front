@@ -12,11 +12,10 @@ import { ThemeService } from '../../adapters/theme-service';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, RouterModule, ButtonModule],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+    selector: 'app-header',
+    imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, RouterModule, ButtonModule],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
   items: MenuItem[] | undefined;

@@ -15,11 +15,10 @@ interface ResponsiveOption {
 
 
 @Component({
-  selector: 'app-product-carousel',
-  standalone: true,
-  imports: [CarouselModule, ButtonModule, TagModule, RouterModule],
-  templateUrl: './product-carousel.component.html',
-  styleUrl: './product-carousel.component.scss'
+    selector: 'app-product-carousel',
+    imports: [CarouselModule, ButtonModule, TagModule, RouterModule],
+    templateUrl: './product-carousel.component.html',
+    styleUrl: './product-carousel.component.scss'
 })
 export class ProductCarouselComponent implements OnInit, OnChanges {
   products: Product[] = [];

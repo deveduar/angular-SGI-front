@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ButtonModule } from 'primeng/button';
 import { Component, OnInit  } from '@angular/core';
 import { OrderListModule } from 'primeng/orderlist';
@@ -11,21 +11,18 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { ProductCarouselComponent } from '../product-carousel/product-carousel.component';
 
 @Component({
-  selector: 'app-product-picker',
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-product-picker',
+    imports: [
     ButtonModule,
     OrderListModule,
     ListboxModule,
-    ProductDetailComponent, 
+    ProductDetailComponent,
     FormsModule,
     SkeletonModule,
     ProductCarouselComponent
-  
-  ],
-  templateUrl: './product-picker.component.html',
-  styleUrl: './product-picker.component.scss'
+],
+    templateUrl: './product-picker.component.html',
+    styleUrl: './product-picker.component.scss'
 })
 export class ProductPickerComponent implements OnInit {
   products!: Product[];

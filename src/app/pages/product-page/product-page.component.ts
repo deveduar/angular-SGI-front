@@ -12,11 +12,10 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 
 @Component({
-  selector: 'app-product-page',
-  standalone: true,
-  imports: [ProductDetailComponent, ProductCarouselComponent, CommonModule, BreadcrumbModule, ImageModule, ButtonModule, TagModule],
-  templateUrl: './product-page.component.html',
-  styleUrls: ['./product-page.component.scss']
+    selector: 'app-product-page',
+    imports: [ProductDetailComponent, ProductCarouselComponent, CommonModule, BreadcrumbModule, ImageModule, ButtonModule, TagModule],
+    templateUrl: './product-page.component.html',
+    styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
   product: Product | undefined;

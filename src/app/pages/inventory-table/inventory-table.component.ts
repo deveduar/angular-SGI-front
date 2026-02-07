@@ -42,11 +42,10 @@ interface FormattedProduct {
 
 
 @Component({
-  selector: 'app-inventory-table',
-  standalone: true,
-  imports: [TableModule, TagModule, RatingModule, ButtonModule, CommonModule, FormsModule, InputTextModule, IconFieldModule, InputIconModule, DialogModule, RippleModule,ToastModule, ToolbarModule, ConfirmDialogModule, InputTextareaModule, DropdownModule, RadioButtonModule, InputNumberModule],
-  templateUrl: './inventory-table.component.html',
-  styleUrl: './inventory-table.component.scss'
+    selector: 'app-inventory-table',
+    imports: [TableModule, TagModule, RatingModule, ButtonModule, CommonModule, FormsModule, InputTextModule, IconFieldModule, InputIconModule, DialogModule, RippleModule, ToastModule, ToolbarModule, ConfirmDialogModule, InputTextareaModule, DropdownModule, RadioButtonModule, InputNumberModule],
+    templateUrl: './inventory-table.component.html',
+    styleUrl: './inventory-table.component.scss'
 })
 
 export class InventoryTableComponent implements OnInit {

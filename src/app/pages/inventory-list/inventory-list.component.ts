@@ -1,34 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, input, signal, computed, effect, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';
 
-import { CommonModule } from '@angular/common';
 import { DataViewModule } from 'primeng/dataview';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';
 import { PaginatorModule } from 'primeng/paginator';
 import { DropdownModule } from 'primeng/dropdown';
-import { SelectItem } from 'primeng/api';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
-
-interface CategoryOption {
-  label: string;
-  value: string;
-}
-
-type sortField = "price" | "id";
-
-// interface SortOption {
-//   label: string;
-//   value: sortField | '!price' | '!id';
-// }
-
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-inventory-list',
@@ -37,143 +24,108 @@ type sortField = "price" | "id";
   templateUrl: './inventory-list.component.html',
   styleUrl: './inventory-list.component.scss'
 })
+export class InventoryListComponent {
 
-export class InventoryListComponent implements OnInit {
+  // Inputs
+  selectedCategoryFromUrl = input<string>('');
 
-    @Input() selectedCategoryFromUrl: string = '';
-    
-    products!: Product[];
-    errorMessage: string | null = null;
-    
-    sortOptions!: SelectItem[];
-    sortOrder!: number;
-    // sortField!: string;
-    sortField: sortField = 'price';
-    // sortKey: SortKey = 'price';
+  // Services
+  private inventoryService = inject(InventoryService);
 
-    layout = 'list';
+  // State Signals
+  products = signal<Product[]>([]);
+  sortOption = signal<string>('id');
+  searchTerm = signal<string>('');
+  selectedCategory = signal<string>('');
+  errorMessage = signal<string | null>(null);
 
-    searchTerm = '';
-    filteredProducts: Product[] = [];
+  // Computed
+  categories = computed(() => [...new Set(this.products().map(product => product.category))]);
 
-    categoryOptions: CategoryOption[] = [];
-    selectedCategory = '';
-    categories: string[] = [];
+  categoryOptions = computed(() => {
+    const cats = this.categories().map(category => ({ label: category, value: category }));
+    return [{ label: 'All Categories', value: '' }, ...cats];
+  });
 
-    constructor(private inventoryService: InventoryService){}
+  filteredProducts = computed(() => {
+    let result = this.products();
 
-    ngOnInit(): void {
-      this.inventoryService.getProducts().subscribe(
-
-        {     
-          next: (data) => {
-          this.products = data;
-          this.errorMessage = null;
-          // console.log(data)
-
-          this.filteredProducts = [...this.products];
-          this.categories = [...new Set(this.products.map(product => product.category))];
-          this.categoryOptions = this.categories.map(category => ({
-            label: category, 
-            value: category
-          }));
-          
-          this.categoryOptions.unshift({ label: 'All Categories', value: '' });
-
-          if (this.selectedCategoryFromUrl) {
-            this.selectedCategory = this.selectedCategoryFromUrl;
-            this.onCategoryChange({ value: this.selectedCategory });
-          }
-
-          this.sortField = 'id';
-          this.sortOrder = 1;
-        },
-          error: (err) => {
-            this.errorMessage = `ERROR: ${err.message}`;
-        }
-        }
-      );
-
-      this.sortOptions = [
-        { label: 'Sort by ID', value: 'id' },
-        { label: 'Price High to Low', value: '!price' },
-        { label: 'Price Low to High', value: 'price' }
-      ];
-
-
-    };
-
-    // private isSortField(value: string): value is sortField {
-    //   return value === 'price' || value === 'id';
-    // }
-
-    onSortChange(event: { value: sortField | '!price' | '!id'  }) {
-      const value = event.value;
-
-      // if (value.indexOf('!') === 0) {
-      //     this.sortOrder = -1;
-      //     this.sortField = value.substring(1, value.length);
-      // } else {
-      //     this.sortOrder = 1;
-      //     this.sortField = value;
-      // }
-      if (value.indexOf('!') === 0) {
-        this.sortOrder = -1;
-        const field = value.substring(1) as sortField;
-        this.sortField = field;
-    } else {
-        this.sortOrder = 1;
-        this.sortField = value as sortField; 
-    }
-      this.applySort();
+    // Filter Category
+    const category = this.selectedCategory();
+    if (category) {
+      result = result.filter(p => p.category === category);
     }
 
-    onSearchChange() {
-      this.filteredProducts = this.products.filter(product =>
-          product.title.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
-          (this.selectedCategory ? product.category === this.selectedCategory : true)
-      );
-      this.applySort();
+    // Filter Search
+    const term = this.searchTerm().toLowerCase();
+    if (term) {
+      result = result.filter(p => p.title.toLowerCase().includes(term));
     }
 
-    onCategoryChange(event: {value:string}) {
-      this.selectedCategory = event.value;
-      this.searchTerm = '';
+    // Sort
+    const sortVal = this.sortOption();
+    let field = sortVal;
+    let order = 1;
 
-      if (!this.selectedCategory || this.selectedCategory === '') {
-        this.filteredProducts = [...this.products];
-      } else {
-        
-        this.filteredProducts = this.products.filter(product =>
-          product.category === this.selectedCategory
-        );
+    if (sortVal.startsWith('!')) {
+      order = -1;
+      field = sortVal.substring(1);
+    }
+
+    if (field) {
+      result = [...result].sort((a, b) => {
+        const valA = (a as any)[field];
+        const valB = (b as any)[field];
+        let comparison = 0;
+        if (valA < valB) comparison = -1;
+        else if (valA > valB) comparison = 1;
+        return comparison * order;
+      });
+    }
+    return result;
+  });
+
+  // Constants
+  sortOptions: SelectItem[] = [
+    { label: 'Sort by ID', value: 'id' },
+    { label: 'Price High to Low', value: '!price' },
+    { label: 'Price Low to High', value: 'price' }
+  ];
+
+  layout = 'list'; // kept as property or signal? DataView uses it? 
+  // DataView usually manages layout internally or via [layout]="layout".
+  // Original code had `layout = 'list'`.
+
+  constructor() {
+    this.inventoryService.getProducts().subscribe({
+      next: (data) => {
+        this.products.set(data);
+        this.sortOption.set('id');
+      },
+      error: (err) => this.errorMessage.set(`ERROR: ${err.message}`)
+    });
+
+    effect(() => {
+      const urlCat = this.selectedCategoryFromUrl();
+      if (urlCat) {
+        this.selectedCategory.set(urlCat);
       }
-      this.applySort();
-    }
+    });
+  }
 
-    applySort() {
-      if (this.sortField) {
-          this.filteredProducts.sort((a, b) => {
-              const isAsc = this.sortOrder === 1;
-              const comparison = a[this.sortField] < b[this.sortField] ? -1 : 1;
-              return isAsc ? comparison : -comparison;
-          });
-      }
-    }
+  // Event Handlers
+  onSortChange(event: { value: string }) {
+    this.sortOption.set(event.value);
+  }
 
-  //   getSeverity (product: Product) {
-  //     switch (product.inventoryStatus) {
-  //         case 'INSTOCK':
-  //             return 'success';
+  onCategoryChange(event: { value: string }) {
+    this.selectedCategory.set(event.value);
+    this.searchTerm.set('');
+  }
 
-  //         case 'LOWSTOCK':
-  //             return 'warning';
-
-  //         case 'OUTOFSTOCK':
-  //             return 'danger';
-
-  //         default:
-  //             return null;
-  //     }
-  // };
+  // onSearchChange removed as computed handles it.
+  // But we need to update the signal from template.
+  updateSearchTerm(term: string) {
+    this.searchTerm.set(term);
+  }
 }

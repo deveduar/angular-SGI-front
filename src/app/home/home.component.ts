@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 // import { ProductPickerComponent } from '../pages/product-picker/product-picker.component';
 import { InventoryService } from '../adapters/api/inventory.service';
@@ -8,16 +8,14 @@ import { ProductCarouselComponent } from '../pages/product-carousel/product-caro
 import { InventoryListComponent } from '../pages/inventory-list/inventory-list.component';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-home',
+    imports: [
     ProductDetailComponent,
     ProductCarouselComponent,
     InventoryListComponent
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
   products!: Product[];

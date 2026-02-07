@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router  } from '@angular/router';
 import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';
-import { CommonModule } from '@angular/common';
+
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { MenuItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -20,11 +20,10 @@ import { InventoryListComponent } from '../inventory-list/inventory-list.compone
 
 
 @Component({
-  selector: 'app-category-page',
-  standalone: true,
-  imports: [CommonModule, BreadcrumbModule, TagModule, ButtonModule, RatingModule, FormsModule, RouterModule, DataViewModule, ListboxModule, MenubarModule, DropdownModule, InventoryListComponent ],
-  templateUrl: './category-page.component.html',
-  styleUrls: ['./category-page.component.scss']
+    selector: 'app-category-page',
+    imports: [BreadcrumbModule, TagModule, ButtonModule, RatingModule, FormsModule, RouterModule, DataViewModule, ListboxModule, MenubarModule, DropdownModule, InventoryListComponent],
+    templateUrl: './category-page.component.html',
+    styleUrls: ['./category-page.component.scss']
 })
 export class CategoryPageComponent implements OnInit {
   category: string | undefined;
