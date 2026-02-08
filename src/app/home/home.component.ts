@@ -1,41 +1,29 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 // import { ProductPickerComponent } from '../pages/product-picker/product-picker.component';
 import { InventoryService } from '../adapters/api/inventory.service';
-import { Product } from '../domain/models/product';
-import { ProductDetailComponent } from '../pages/product-detail/product-detail.component';
 import { ProductCarouselComponent } from '../pages/product-carousel/product-carousel.component';
 import { InventoryListComponent } from '../pages/inventory-list/inventory-list.component';
 
 @Component({
-    selector: 'app-home',
-    imports: [
-    ProductDetailComponent,
+  selector: 'app-home',
+  imports: [
+
     ProductCarouselComponent,
     InventoryListComponent
-],
-    templateUrl: './home.component.html',
-    styleUrl: './home.component.scss'
+  ],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
-  products!: Product[];
+export class HomeComponent {
+  private inventoryService = inject(InventoryService);
+
+  // Convert Observable to Signal using toSignal
+  products = toSignal(this.inventoryService.getProducts(), {
+    initialValue: [] as any[]
+  });
+
+  // Error handling can be done via catchError in the service or via a separate error signal
   errorMessage: string | null = null;
-
-  constructor(private inventoryService: InventoryService){}
-
-  ngOnInit(): void {
-    this.inventoryService.getProducts().subscribe(
-
-      {     
-        next: (data) => {
-        console.log(data)
-        this.products = data;
-        this.errorMessage = null;
-      },
-        error: (err) => {
-          this.errorMessage = `ERROR: ${err.message}`;
-      }
-      }
-    );
-  };
 }

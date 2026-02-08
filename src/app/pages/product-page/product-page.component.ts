@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InventoryService } from '../../adapters/api/inventory.service';
 import { Product } from '../../domain/models/product';
-import { ProductDetailComponent } from '../product-detail/product-detail.component';
+
 import { ProductCarouselComponent } from '../product-carousel/product-carousel.component';
 import { CommonModule } from '@angular/common';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -12,10 +12,10 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 
 @Component({
-    selector: 'app-product-page',
-    imports: [ProductDetailComponent, ProductCarouselComponent, CommonModule, BreadcrumbModule, ImageModule, ButtonModule, TagModule],
-    templateUrl: './product-page.component.html',
-    styleUrls: ['./product-page.component.scss']
+  selector: 'app-product-page',
+  imports: [ProductCarouselComponent, CommonModule, BreadcrumbModule, ImageModule, ButtonModule, TagModule],
+  templateUrl: './product-page.component.html',
+  styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
   product: Product | undefined;
@@ -23,10 +23,10 @@ export class ProductPageComponent implements OnInit {
   items: MenuItem[] | undefined;
   home: MenuItem | undefined;
 
-  selectedVariant!: Product['variants'][0]; 
+  selectedVariant!: Product['variants'][0];
   selectedColor!: string;
   selectedSize!: string;
-  
+
   filteredVariants: Product['variants'] = [];
   availableColors: string[] = [];
   availableSizes: string[] = [];
@@ -56,7 +56,7 @@ export class ProductPageComponent implements OnInit {
   availabilitySeverity: 'success' | 'danger' = 'danger';
   availabilityStatus: string = 'Stockout';
 
-  constructor(private route: ActivatedRoute, private inventoryService: InventoryService) {}
+  constructor(private route: ActivatedRoute, private inventoryService: InventoryService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -70,7 +70,7 @@ export class ProductPageComponent implements OnInit {
           this.selectedVariant = this.product.variants[0];
           this.selectedColor = this.selectedVariant.color;
           this.selectedSize = this.selectedVariant.size;
-          
+
           this.loadAvailableColors();
           this.loadAvailableSizes();
 
@@ -127,7 +127,7 @@ export class ProductPageComponent implements OnInit {
 
   setupBreadcrumb(product: Product): void {
     this.items = [
-      { label: product.category || 'Category', routerLink: `/category/${product.category}` }, 
+      { label: product.category || 'Category', routerLink: `/category/${product.category}` },
       { label: product.title, routerLink: `/product/${product.id}` }
     ];
   }

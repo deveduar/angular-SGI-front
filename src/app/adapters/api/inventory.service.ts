@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, tap } from 'rxjs';
 import { Product } from '../../domain/models/product';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Product } from '../../domain/models/product';
 
 export class InventoryService {
 
-  private apiUrl = 'http://localhost:3000/api/products';
+  private apiUrl = environment.apiUrl;
   private productsCache: Product[] | null = null;
 
   constructor(private http: HttpClient) { }
@@ -27,7 +28,7 @@ export class InventoryService {
     if (this.productsCache) {
       const product = this.productsCache.find(p => p.id === id);
       if (product) {
-        return of(product as Product);  
+        return of(product as Product);
 
       }
       // return of(product as Product);

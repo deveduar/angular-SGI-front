@@ -1,0 +1,94 @@
+
+> my-app@0.0.0 test
+> ng test
+
+[33mÔØ»[39m Building...
+[32mÔ£ö[39m Building...
+[1mInitial chunk files[22m                                               [2m | [22m[1mNames[22m                                                          [2m | [22m [1mRaw size[22m
+[32mchunk-MZWWAHRS.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m2.19 MB[39m[2m | [22m
+[32mpolyfills.js[39m                                                      [2m | [22m[2mpolyfills[22m                                                      [2m | [22m[36m998.98 kB[39m[2m | [22m
+[32mspec-app-pages-inventory-table-inventory-table.component.spec.js[39m  [2m | [22m[2mspec-app-pages-inventory-table-inventory-table.component.spec[22m  [2m | [22m[36m793.31 kB[39m[2m | [22m
+[32mspec-app-pages-product-picker-product-picker.component.spec.js[39m    [2m | [22m[2mspec-app-pages-product-picker-product-picker.component.spec[22m    [2m | [22m[36m406.34 kB[39m[2m | [22m
+[32mchunk-DPOPKAJN.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m[36m292.14 kB[39m[2m | [22m
+[32mchunk-X2BIJNQL.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m[36m224.61 kB[39m[2m | [22m
+[32mchunk-3RVQKLL6.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m[36m181.28 kB[39m[2m | [22m
+[32mchunk-ZN7KATJ2.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m[36m174.83 kB[39m[2m | [22m
+[32mchunk-7VDNW7PL.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m[36m130.41 kB[39m[2m | [22m
+[32mchunk-L6J3VA2N.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m84.38 kB[39m[2m | [22m
+[32mchunk-OX4DC3W5.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m74.14 kB[39m[2m | [22m
+[32mspec-app-pages-product-page-product-page.component.spec.js[39m        [2m | [22m[2mspec-app-pages-product-page-product-page.component.spec[22m        [2m | [22m [36m70.74 kB[39m[2m | [22m
+[32mchunk-UW4U2QUD.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m67.62 kB[39m[2m | [22m
+[32mjasmine-cleanup-1.js[39m                                              [2m | [22m[2mjasmine-cleanup-1[22m                                              [2m | [22m [36m67.20 kB[39m[2m | [22m
+[32mchunk-ZJNMTFVX.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m62.70 kB[39m[2m | [22m
+[32mchunk-2X4PKC5T.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m58.87 kB[39m[2m | [22m
+[32mchunk-TYDSHE7H.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m55.69 kB[39m[2m | [22m
+[32mchunk-37XHOVOP.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m40.53 kB[39m[2m | [22m
+[32mchunk-SCUNNKQG.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m31.23 kB[39m[2m | [22m
+[32mchunk-C2FDIXY7.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m30.00 kB[39m[2m | [22m
+[32mchunk-CL4XCLKR.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m27.44 kB[39m[2m | [22m
+[32mspec-app-home-home.component.spec.js[39m                              [2m | [22m[2mspec-app-home-home.component.spec[22m                              [2m | [22m [36m22.41 kB[39m[2m | [22m
+[32mtest_main.js[39m                                                      [2m | [22m[2mtest_main[22m                                                      [2m | [22m [36m22.23 kB[39m[2m | [22m
+[32mstyles.css[39m                                                        [2m | [22m[2mstyles[22m                                                         [2m | [22m [36m17.29 kB[39m[2m | [22m
+[32mspec-app-pages-category-page-category-page.component.spec.js[39m      [2m | [22m[2mspec-app-pages-category-page-category-page.component.spec[22m      [2m | [22m [36m15.77 kB[39m[2m | [22m
+[32mchunk-5K75LTOM.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m [36m13.57 kB[39m[2m | [22m
+[32mchunk-T67KVDOS.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m9.84 kB[39m[2m | [22m
+[32mchunk-BF5T4IRN.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m7.31 kB[39m[2m | [22m
+[32mchunk-HVZKILOO.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m6.75 kB[39m[2m | [22m
+[32mchunk-3W5M7HAX.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m6.41 kB[39m[2m | [22m
+[32mchunk-HXUBV7ZT.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m6.11 kB[39m[2m | [22m
+[32mchunk-DAYULWYE.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m5.77 kB[39m[2m | [22m
+[32mchunk-KNHVJR7Z.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m5.04 kB[39m[2m | [22m
+[32mchunk-56EM2LKT.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m4.58 kB[39m[2m | [22m
+[32mspec-app-app.component.spec.js[39m                                    [2m | [22m[2mspec-app-app.component.spec[22m                                    [2m | [22m  [36m3.72 kB[39m[2m | [22m
+[32mchunk-IYMTTEWV.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m3.47 kB[39m[2m | [22m
+[32mchunk-5G2J5QRI.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m3.34 kB[39m[2m | [22m
+[32mspec-app-pages-inventory-list-inventory-list.component.spec.js[39m    [2m | [22m[2mspec-app-pages-inventory-list-inventory-list.component.spec[22m    [2m | [22m  [36m2.08 kB[39m[2m | [22m
+[32mspec-app-pages-product-detail-product-detail.component.spec.js[39m    [2m | [22m[2mspec-app-pages-product-detail-product-detail.component.spec[22m    [2m | [22m  [36m1.96 kB[39m[2m | [22m
+[32mspec-app-pages-product-carousel-product-carousel.component.spec.js[39m[2m | [22m[2mspec-app-pages-product-carousel-product-carousel.component.spec[22m[2m | [22m  [36m1.95 kB[39m[2m | [22m
+[32mchunk-UOWL2WDN.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m1.80 kB[39m[2m | [22m
+[32mspec-app-layout-header-header.component.spec.js[39m                   [2m | [22m[2mspec-app-layout-header-header.component.spec[22m                   [2m | [22m  [36m1.79 kB[39m[2m | [22m
+[32mchunk-EBWFGWN4.js[39m                                                 [2m | [22m[2m-[22m                                                              [2m | [22m  [36m1.61 kB[39m[2m | [22m
+[32mspec-app-layout-footer-footer.component.spec.js[39m                   [2m | [22m[2mspec-app-layout-footer-footer.component.spec[22m                   [2m | [22m  [36m1.05 kB[39m[2m | [22m
+[32mspec-app-adapters-api-inventory.service.spec.js[39m                   [2m | [22m[2mspec-app-adapters-api-inventory.service.spec[22m                   [2m | [22m[36m650 bytes[39m[2m | [22m
+[32mspec-app-adapters-theme-service.spec.js[39m                           [2m | [22m[2mspec-app-adapters-theme-service.spec[22m                           [2m | [22m[36m614 bytes[39m[2m | [22m
+[32mjasmine-cleanup-0.js[39m                                              [2m | [22m[2mjasmine-cleanup-0[22m                                              [2m | [22m[36m519 bytes[39m[2m | [22m
+
+[1m [22m                                                                 [2m | [22m[1mInitial total[22m                                                  [2m | [22m  [1m6.23 MB[22m
+
+Application bundle generation complete. [4.629 seconds] - 2026-02-08T21:46:48.229Z
+
+Watch mode enabled. Watching for file changes...
+[33m08 02 2026 22:46:48.713:WARN [karma]: [39mNo captured browser, open http://localhost:9876/
+[32m08 02 2026 22:46:48.746:INFO [karma-server]: [39mKarma v6.4.4 server started at http://localhost:9876/
+[32m08 02 2026 22:46:48.746:INFO [launcher]: [39mLaunching browsers Chrome with concurrency unlimited
+[32m08 02 2026 22:46:48.752:INFO [launcher]: [39mStarting browser Chrome
+[32m08 02 2026 22:46:49.806:INFO [Chrome 144.0.0.0 (Windows 10)]: [39mConnected on socket YgK_67AJ2acBLJAlAAAB with id 68813430
+Chrome 144.0.0.0 (Windows 10): Executed 0 of 14[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 1 of 14[32m SUCCESS[39m (0 secs / 0.054 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 2 of 14[32m SUCCESS[39m (0 secs / 0.106 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 3 of 14[32m SUCCESS[39m (0 secs / 0.173 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 4 of 14[32m SUCCESS[39m (0 secs / 0.187 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 5 of 14[32m SUCCESS[39m (0 secs / 0.196 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 6 of 14[32m SUCCESS[39m (0 secs / 0.212 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 7 of 14[32m SUCCESS[39m (0 secs / 0.313 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 8 of 14[32m SUCCESS[39m (0 secs / 0.389 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 9 of 14[32m SUCCESS[39m (0 secs / 0.412 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 10 of 14[32m SUCCESS[39m (0 secs / 0.415 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 11 of 14[32m SUCCESS[39m (0 secs / 0.434 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 12 of 14[32m SUCCESS[39m (0 secs / 0.436 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 13 of 14[32m SUCCESS[39m (0 secs / 0.445 secs)
+[1A[2K[31mChrome 144.0.0.0 (Windows 10) ProductPageComponent should create FAILED[39m
+	TypeError: Cannot read properties of undefined (reading 'name')
+	    at ProductPageComponent2_Template (ng:///ProductPageComponent2.js:138:54)
+	    at executeTemplate (node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:4848:5)
+	    at refreshView (node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:5518:7)
+	    at detectChangesInView (node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:5658:5)
+	    at detectChangesInViewIfAttached (node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:5641:3)
+	    at detectChangesInComponent (node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:5632:5)
+	    at detectChangesInChildComponents (node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:5680:5)
+	    at refreshView (node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:5560:7)
+	    at detectChangesInView (node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:5658:5)
+	    at detectChangesInViewWhileDirty (node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs:5467:5)
+Chrome 144.0.0.0 (Windows 10): Executed 14 of 14[31m (1 FAILED)[39m (0 secs / 0.948 secs)
+[1A[2KChrome 144.0.0.0 (Windows 10): Executed 14 of 14[31m (1 FAILED)[39m (1.034 secs / 0.948 secs)
+[31mTOTAL: 1 FAILED, 13 SUCCESS[39m
