@@ -1,0 +1,105 @@
+.dashboard {
+    margin-bottom: 1rem;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1024px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &__card {
+        background-color: var(--surface-card);
+        box-shadow: 0 2px 8px var(--surface-overlay);
+        padding: 1rem;
+        border-radius: var(--border-radius, 0.5rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &--orders {
+            border-left: 4px solid var(--primary-color);
+        }
+
+        &--revenue {
+            border-left: 4px solid #ff9800;
+        }
+
+        &--customers {
+            border-left: 4px solid var(--surface-100);
+        }
+
+        &--comments {
+            border-left: 4px solid #9c27b0;
+        }
+
+        &--loading {
+            border-left: 4px solid var(--surface-200);
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    &__title {
+        color: var(--text-color-secondary);
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+
+    &__value {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    &__icon-container {
+        background-color: var(--surface-hover);
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__icon {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        gap: var(--inline-spacing, 0.5rem);
+    }
+
+    &__change {
+        font-size: 1rem;
+        font-weight: 500;
+
+        &--positive {
+            color: var(--green-color);
+        }
+
+        &--negative {
+            color: #dc3545;
+        }
+    }
+
+    &__detail {
+        color: var(--text-color-secondary);
+        font-size: 0.875rem;
+    }
+}

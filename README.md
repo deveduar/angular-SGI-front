@@ -3,7 +3,7 @@
 Manage products, categories and variants with printfull API.
 
 Technologies:
-- angular 18
+- angular 21
 - primeng, SASS
 - Backend with Express [inventory-backend](https://github.com/deveduar/inventory-backend)
 

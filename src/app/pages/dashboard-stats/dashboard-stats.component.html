@@ -1,0 +1,85 @@
+<div class="dashboard">
+    <div class="dashboard__grid">
+        @if (statistics(); as stats) {
+        <!-- Orders Card -->
+        <div class="dashboard__card dashboard__card--orders">
+            <div class="dashboard__header">
+                <div>
+                    <span class="dashboard__title">Orders</span>
+                    <div class="dashboard__value">{{ stats.totalOrders }}</div>
+                </div>
+                <div class="dashboard__icon-container">
+                    <i class="pi pi-shopping-cart dashboard__icon"></i>
+                </div>
+            </div>
+            <div class="dashboard__footer">
+                <span class="dashboard__change dashboard__change--positive">{{ stats.recentOrders }} new</span>
+                <span class="dashboard__detail">in last 30 days</span>
+            </div>
+        </div>
+
+        <!-- Revenue Card -->
+        <div class="dashboard__card dashboard__card--revenue">
+            <div class="dashboard__header">
+                <div>
+                    <span class="dashboard__title">Revenue</span>
+                    <div class="dashboard__value">${{ stats.revenue | number:'1.2-2' }}</div>
+                </div>
+                <div class="dashboard__icon-container">
+                    <i class="pi pi-dollar dashboard__icon"></i>
+                </div>
+            </div>
+            <div class="dashboard__footer">
+                <span class="dashboard__change dashboard__change--positive">Total</span>
+                <span class="dashboard__detail">from all orders</span>
+            </div>
+        </div>
+
+        <!-- Products Card -->
+        <div class="dashboard__card dashboard__card--customers">
+            <div class="dashboard__header">
+                <div>
+                    <span class="dashboard__title">Products</span>
+                    <div class="dashboard__value">{{ stats.totalProducts }}</div>
+                </div>
+                <div class="dashboard__icon-container">
+                    <i class="pi pi-inbox dashboard__icon"></i>
+                </div>
+            </div>
+            <div class="dashboard__footer">
+                <span class="dashboard__change dashboard__change--positive">Active</span>
+                <span class="dashboard__detail">in store</span>
+            </div>
+        </div>
+
+        <!-- Recent Activity Card -->
+        <div class="dashboard__card dashboard__card--comments">
+            <div class="dashboard__header">
+                <div>
+                    <span class="dashboard__title">Recent Activity</span>
+                    <div class="dashboard__value">{{ stats.recentOrders }}</div>
+                </div>
+                <div class="dashboard__icon-container">
+                    <i class="pi pi-chart-line dashboard__icon"></i>
+                </div>
+            </div>
+            <div class="dashboard__footer">
+                <span class="dashboard__change dashboard__change--positive">Orders</span>
+                <span class="dashboard__detail">last 30 days</span>
+            </div>
+        </div>
+        } @else {
+        <!-- Loading State -->
+        <div class="dashboard__card dashboard__card--loading">
+            <div class="dashboard__header">
+                <div>
+                    <span class="dashboard__title">Loading...</span>
+                    <div class="dashboard__value">
+                        <i class="pi pi-spin pi-spinner"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
